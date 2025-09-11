@@ -27,7 +27,6 @@ PoliGuard aims to be more than just a simple tower defense game, but a complete 
 -   **Interactive Paths:** Allow the player to build new paths for enemies and close off others.
 -   **Player Abilities:** Add special player abilities with a mana system, such as a "Gold Rush" to temporarily double coins earned or a targeted meteor strike.
 -   **Working Countdown:** Make the wave countdown functional and display it prominently in the middle of the screen.
--   **Price Fluctuation:** Implement a system where tower prices fluctuate based on the game's state.
 - **Map Zoom:** Add a map zoom system to allow for potentially infinite terrain.
 - **Living Towers:** Introduce towers that gain insane upgrades if they survive for a long time.
 - **Powered Towers:** Implement towers that require resources to be supplied via tracks from mining centers.
