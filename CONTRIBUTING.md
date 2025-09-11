@@ -1,6 +1,7 @@
-## Como contribuir
-1. Faça um fork deste repositório.
-2. Crie uma branch para sua modificação: `git checkout -b minha-feature`.
-3. Commit suas alterações: `git commit -m 'Adiciona nova feature'`.
-4. Push para a branch: `git push origin minha-feature`.
-5. Abra um Pull Request neste repositório.
+### How to Contribute
+
+1.  Fork this repository.
+2.  Create a branch for your modification: `git checkout -b my-feature`.
+3.  Commit your changes: `git commit -m 'Adds new feature'`.
+4.  Push to the branch: `git push origin my-feature`.
+5.  Open a Pull Request in this repository.
