@@ -11,7 +11,7 @@ PoliGuard is a tactical defense game where you build strategic towers to elimina
 PoliGuard aims to be more than just a simple tower defense game, but a complete and realistic experience. Here are some ideas for those who want to contribute:
 
 -   **Optimization:** Optimize the game's performance, as it can lag easily.
--   **Keyboard Shortcuts:** Add keyboard shortcuts to create turrets or activate skills.
+-   **Keyboard Shortcuts:** Add keyboard shortcuts to create towers or activate skills.
 -   **Structure:** Organize the folder and file structure.
 -   **UI/UX Improvements:** Enhance the game's interface and overall user experience.
 -   **Bug Fixes:** Help identify and fix existing bugs.
