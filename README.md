@@ -1,9 +1,9 @@
-# PoliGuard
+# PoliGuard 🏰🟧
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)
 
-🏰🟧 PoliGuard is a simple Tower Defense Game. Doing...
-
 PoliGuard is a tactical defense game where you build strategic towers to eliminate enemy threats. This is an open-source project, with a focus on clear gameplay and robust functionality.
+
+<img width="1326" height="683" alt="image" src="https://github.com/user-attachments/assets/be8d789e-c22b-4cfd-95f7-3e1ef6813ed5" />
 
 ---
 
