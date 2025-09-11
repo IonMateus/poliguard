@@ -3,25 +3,25 @@
 
 🏰🟧 PoliGuard is a simple Tower Defense Game. Doing...
 
-PoliGuard é um jogo de defesa tática onde você constrói torres estratégicas para eliminar ameaças inimigas. Este é um projeto de código aberto, com foco em uma jogabilidade clara e funcionalidade robusta.
+PoliGuard is a tactical defense game where you build strategic towers to eliminate enemy threats. This is an open-source project, with a focus on clear gameplay and robust functionality.
 
 ---
 
-## 🎯 Sobre o Projeto
-PoliGuard é um projeto **open-source**. O objetivo é desenvolver um jogo de tower defense funcional e divertido, com o envolvimento da comunidade de desenvolvedores.
+## 🎯 About the Project
+PoliGuard is an **open-source** project. The goal is to develop a functional and fun tower defense game, with the involvement of the developer community.
 
 ---
 
-## 🚀 Como Contribuir
-O desenvolvimento do PoliGuard é **aberto a contribuições**. Desenvolvedores de todos os níveis são bem-vindos para ajudar a aprimorar o jogo.
+## 🚀 How to Contribute
+The development of PoliGuard is **open to contributions**. Developers of all levels are welcome to help improve the game.
 
-### Comece agora:
-1.  Faça um **fork** do repositório.
-2.  **Clone** seu fork.
-3.  Crie uma nova **branch** para suas alterações.
-4.  Faça suas alterações e submeta um **Pull Request**.
+### Get started now:
+1. **Fork** the repository.
+2. **Clone** your fork.
+3. Create a new **branch** for your changes.
+4. Make your changes and submit a **Pull Request**.
 
 ---
 
-## 📄 Licença
-Este projeto está licenciado sob a Licença MIT.
+## 📄 License
+This project is licensed under the MIT License.
