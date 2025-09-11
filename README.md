@@ -9,6 +9,8 @@ PoliGuard is a tactical defense game where you build strategic towers to elimina
 
 <img width="1326" height="683" alt="image" src="https://github.com/user-attachments/assets/be8d789e-c22b-4cfd-95f7-3e1ef6813ed5" />
 
+**Version:** 1.0.0
+
 ---
 
 ## 💡 Ideas for Contribution
@@ -42,7 +44,7 @@ PoliGuard aims to be more than just a simple tower defense game, but a complete 
 ## 🎯 About the Project
 PoliGuard is an **open-source** project. The goal is to develop a functional and fun tower defense game, with the involvement of the developer community.
 
----
+
 
 ## 🚀 How to Contribute
 The development of PoliGuard is **open to contributions**. Developers of all levels are welcome to help improve the game.
