@@ -109,7 +109,7 @@
                 projectiles: [],
                 effects: [],
                 enemySpawnTimer: 0,
-                waveTimer: 300,
+                waveTimer: 60,
                 countdownTimer: 5,
                 showCountdown: false,
                 enemiesInWave: 5,
@@ -695,7 +695,7 @@
             } else {
                 // Countdown between waves
                 gameState.waveTimer -= gameSpeed;
-                
+             console.log(gameState.waveTimer)
                 if (gameState.waveTimer <= 0) {
                     gameState.countdownTimer--;
                     document.getElementById('countdown').textContent = gameState.countdownTimer;
