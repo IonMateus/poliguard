@@ -9,7 +9,10 @@
 > **Versioning guide:** Versions follow the format `MAJOR.MINOR.PATCH`.  
 > - `MAJOR`: breaking changes or big updates.  
 > - `MINOR`: new features that are backward compatible.  
-> - `PATCH`: small fixes or minor improvements.  
+> - `PATCH`: small fixes or minor improvements. 
+## [1.1.2] -2025-9-12
+- Fixed counter
+
 ## [1.1.1] -2025-9-12
 - Translate page to English
 
