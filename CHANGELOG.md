@@ -10,7 +10,7 @@
 > - `MAJOR`: breaking changes or big updates.  
 > - `MINOR`: new features that are backward compatible.  
 > - `PATCH`: small fixes or minor improvements.  
-## [2.0.1] -2025-9-12
+## [1.1.1] -2025-9-12
 - Translate page to English
 
 ## [1.0.1] - 2025-09-11
