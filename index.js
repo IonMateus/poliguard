@@ -898,7 +898,7 @@
             
             // Draw enemies with brightness and shadows
             gameState.enemies.forEach(enemy => {
-                // Verificar efeitos
+                // Verify effects
                 const isSlowed = enemy.slowedUntil && Date.now() < enemy.slowedUntil;
                 const isPoisoned = enemy.poisonedUntil && Date.now() < enemy.poisonedUntil;
                 
