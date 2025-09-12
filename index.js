@@ -438,7 +438,7 @@
                     
                     // Process poison damage
                     if (enemy.poisonedUntil && Date.now() < enemy.poisonedUntil) {
-                        if (Date.now() - enemy.lastPoisonDamage >= 1000) { // Dano a cada segundo
+                        if (Date.now() - enemy.lastPoisonDamage >= 1000) { // Damage per second
                             enemy.health -= enemy.poisonDamage;
                             enemy.lastPoisonDamage = Date.now();
                             
