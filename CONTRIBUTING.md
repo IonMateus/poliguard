@@ -1,12 +1,55 @@
-### How to Contribute
+# Contributing to PoliGuard
 
-1.  Fork this repository.
-2.  Create a branch for your modification: `git checkout -b my-feature`.
-3.  Commit your changes: `git commit -m 'Adds new feature'`.
-4.  Push to the branch: `git push origin my-feature`.
-5.  Open a Pull Request in this repository.
+Thank you for contributing! Please follow these steps:
 
+---
 
+## Steps to Contribute
+
+1. **Fork and Clone**  
+Clone your fork locally:
+`git clone https://github.com/ionmateus/poliguard.git`  
+`cd poliguard`
+
+2. **Create a Branch**  
+Create a new branch for your changes:  
+`git checkout -b my-feature`
+
+3. **Make Changes**  
+Implement your feature or fix. Follow the code style and keep commits clear.
+
+4. **Commit and Push**  
+Stage and commit your changes:  
+`git add .`  
+`git commit -m "Describe your change"`  
+Push to your branch:  
+`git push origin my-feature`
+
+5. **Open a Pull Request**  
+Explain your changes and reference any related issues.
+
+---
+
+## Updating the Changelog
+
+All significant changes must be documented in `CHANGELOG.md` following this style:
+
+- Keep it simple and concise (1–5 lines)  
+- Describe main changes, additions, or fixes  
+- Focus on notable updates only  
+- Contributors can add their updates manually when submitting a PR  
+- Versioning format: `MAJOR.MINOR.PATCH`  
+  - `MAJOR`: breaking changes or big updates  
+  - `MINOR`: new features, backward compatible  
+  - `PATCH`: small fixes or minor improvements  
+
+Example:  
+`[1.0.1] - 2025-09-11`  
+`Files like Contributing, Code of Conduct, and License added.`
+
+See [CHANGELOG.md](https://github.com/IonMateus/poliguard/blob/main/CHANGELOG.md) for reference.
+
+---
 
 ## 💡 Ideas for Contribution
 PoliGuard aims to be more than just a simple tower defense game, but a complete and realistic experience. Here are some ideas for those who want to contribute:
