@@ -701,14 +701,18 @@
                 // Update progress bar smoothly based on total remaining time
                 const totalTimeLeft = gameState.countdownTimer * 60 + gameState.waveTimer;
                 const totalTime = 5 * 60; // 5 seconds * 60 frames
-                const progress = (totalTimeLeft / totalTime) * 100;
+                const progress = Math.max(0, (totalTimeLeft / totalTime) * 100);
                 document.getElementById('progressBar').style.width = progress + '%';
                 
                 if (gameState.waveTimer <= 0) {
                     gameState.countdownTimer--;
+                    document.getElementById('countdown').textContent = gameState.countdownTimer;
                     gameState.waveTimer = 60; // Reset timer for next second
                     
                     if (gameState.countdownTimer <= 0) {
+                        // Ensure progress bar reaches 0% before hiding
+                        document.getElementById('progressBar').style.width = '0%';
+                        
                         // Start next wave
                         gameState.wave++;
                         gameState.enemiesInWave = Math.floor(5 + gameState.wave * 1.5);
