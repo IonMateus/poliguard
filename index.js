@@ -691,14 +691,21 @@
                     gameState.showCountdown = true;
                     gameState.countdownTimer = 5;
                     document.getElementById('countdownContainer').classList.remove('hidden');
+                    // Initialize progress bar to full
+                    document.getElementById('progressBar').style.width = '100%';
                 }
             } else {
                 // Countdown between waves
                 gameState.waveTimer -= gameSpeed;
-             console.log(gameState.waveTimer)
+                
+                // Update progress bar smoothly based on total remaining time
+                const totalTimeLeft = gameState.countdownTimer * 60 + gameState.waveTimer;
+                const totalTime = 5 * 60; // 5 seconds * 60 frames
+                const progress = (totalTimeLeft / totalTime) * 100;
+                document.getElementById('progressBar').style.width = progress + '%';
+                
                 if (gameState.waveTimer <= 0) {
                     gameState.countdownTimer--;
-                    document.getElementById('countdown').textContent = gameState.countdownTimer;
                     gameState.waveTimer = 60; // Reset timer for next second
                     
                     if (gameState.countdownTimer <= 0) {
