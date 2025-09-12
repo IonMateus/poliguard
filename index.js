@@ -27,37 +27,37 @@
         const TOWER_TYPES = {
             basic: { 
                 cost: 50, damage: 20, range: 80, fireRate: 60, color: '#ff6b35', shape: 'star',
-                name: 'Torre Básica', description: 'Torre equilibrada para iniciantes. Boa relação custo-benefício.'
+                name: 'Basic Tower', description: 'Balanced tower for beginners. Good cost-benefit ratio.'
             },
             fast: { 
                 cost: 75, damage: 15, range: 70, fireRate: 30, color: '#10b981', shape: 'square',
-                name: 'Torre Rápida', description: 'Atira rapidamente, ideal para inimigos em grupo.'
+                name: 'Fast Tower', description: 'Shoot rapidly, ideal for enemies in groups.'
             },
             strong: { 
                 cost: 100, damage: 40, range: 90, fireRate: 90, color: '#ef4444', shape: 'pentagon',
-                name: 'Torre Forte', description: 'Alto dano, ideal para inimigos resistentes.'
+                name: 'Strong Tower', description: 'High Damage, ideal for resistive enemies.'
             },
             sniper: { 
                 cost: 150, damage: 60, range: 150, fireRate: 120, color: '#8b5cf6', shape: 'diamond',
-                name: 'Torre Sniper', description: 'Longo alcance e alto dano, mas tiro lento.'
+                name: 'Sniper Tower', description: 'Long range and high damage, but shoots slower.'
             },
             splash: { 
                 cost: 120, damage: 25, range: 75, fireRate: 75, color: '#f59e0b', shape: 'hexagon',
-                name: 'Torre Explosiva', description: 'Causa dano em área, atinge múltiplos inimigos.'
+                name: 'Explosive Tower', description: 'Causes damage in an area, attacks multiple enemies.'
             },
             slow: { 
                 cost: 90, damage: 8, range: 85, fireRate: 50, color: '#06b6d4', shape: 'square',
-                name: 'Torre Gelo', description: 'Desacelera inimigos, permitindo controle estratégico.',
+                name: 'Ice Tower', description: 'Slows down enemies, allowing strategic control.',
                 slowFactor: 0.5, slowDuration: 3000
             },
             poison: {
                 cost: 110, damage: 5, range: 80, fireRate: 70, color: '#22c55e', shape: 'circle',
-                name: 'Torre Veneno', description: 'Envenena inimigos causando dano contínuo.',
+                name: 'Poison Tower', description: 'Poison enemies causing continuous damage.',
                 poisonDamage: 3, poisonDuration: 4000
             }
         };
         
-        // Sistema de upgrades globais
+        // Global Upgrades
         const TOWER_UPGRADES = {
             basic: { damage: 0, range: 0, fireRate: 0, special: 0 },
             fast: { damage: 0, range: 0, fireRate: 0, special: 0 },
@@ -142,7 +142,7 @@
                 const y = e.clientY - rect.top;
                 
                 if (gameState.sellMode) {
-                    // Modo venda: encontrar torre clicada
+                    // Sell Mode: find clicked tower
                     let towerIndex = -1;
                     gameState.towers.forEach((tower, index) => {
                         const dx = x - tower.x;
@@ -169,7 +169,7 @@
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
                 
-                // Encontrar torre clicada com botão direito
+                // Find tower clicked with right button
                 let towerIndex = -1;
                 gameState.towers.forEach((tower, index) => {
                     const dx = x - tower.x;
@@ -185,13 +185,13 @@
                 }
             });
 
-            // Adicionar eventos de teclado
+            // Add keyboard events
             document.addEventListener('keydown', (e) => {
                 if (!gameRunning) return;
                 
                 const key = e.key;
                 
-                // Atalhos para selecionar torres (1-7)
+                // Keys for selecting towers (1-7)
                 if (key >= '1' && key <= '7') {
                     const towerTypes = ['basic', 'fast', 'strong', 'sniper', 'splash', 'slow', 'poison'];
                     const towerType = towerTypes[parseInt(key) - 1];
@@ -200,12 +200,12 @@
                     }
                 }
                 
-                // Tecla DEL para ativar/desativar modo de venda
+                // Key DEL for activating/unactivating sell mode
                 if (key === 'Delete' || key === 'Del') {
                     toggleSellMode();
                 }
                 
-                // ESC para cancelar seleção
+                // ESC to cancel selection
                 if (key === 'Escape') {
                     gameState.selectedTower = null;
                     gameState.sellMode = false;
@@ -215,7 +215,7 @@
         }
 
         function selectTower(type) {
-            // Se a mesma torre está selecionada, deseleciona
+            // If the same tower is selected, remove selection
             if (gameState.selectedTower === type) {
                 gameState.selectedTower = null;
                 document.getElementById(`${type}TowerBtn`).classList.remove('ring-2', 'ring-primary');
@@ -224,19 +224,19 @@
             
             const towerType = TOWER_TYPES[type];
             if (gameState.money >= towerType.cost) {
-                // Desativar modo venda se estiver ativo
+                // Unactivate sell mode if it is active
                 if (gameState.sellMode) {
                     toggleSellMode();
                 }
                 
                 gameState.selectedTower = type;
                 
-                // Visual feedback - remove seleção anterior
+                // Visual feedback - remove previous selection
                 document.querySelectorAll('[id$="TowerBtn"]').forEach(btn => {
                     btn.classList.remove('ring-2', 'ring-primary');
                 });
                 
-                // Adiciona seleção na nova torre
+                // Add selection of the new tower
                 document.getElementById(`${type}TowerBtn`).classList.add('ring-2', 'ring-primary');
             }
         }
@@ -258,10 +258,10 @@
                 };
                 gameState.towers.push(newTower);
                 
-                // Efeito visual de colocação da torre
+                // Visual Effect for tower placement
                 createTowerPlacementEffect(newTower.x, newTower.y, towerType.color);
                 
-                // Deseleciona a torre após colocar
+                // Remove selection of the tower after placing
                 gameState.selectedTower = null;
                 document.querySelectorAll('[id$="TowerBtn"]').forEach(btn => {
                     btn.classList.remove('ring-2', 'ring-primary');
@@ -316,7 +316,7 @@
             return Math.sqrt(dx * dx + dy * dy) <= width;
         }
 
-        // Funções de Efeitos Visuais
+        // Visual Effect functions
         function createTowerPlacementEffect(x, y, color) {
             for (let i = 0; i < 12; i++) {
                 gameState.effects.push({
@@ -348,7 +348,7 @@
                 });
             }
             
-            // Texto de dano
+            // Damage text
             gameState.effects.push({
                 type: 'text',
                 x: x,
@@ -376,7 +376,7 @@
                 });
             }
             
-            // Texto de dinheiro
+            // Money text
             gameState.effects.push({
                 type: 'text',
                 x: x,
@@ -390,7 +390,7 @@
         }
 
         function createLifeLossEffect() {
-            // Posiciona a explosão na saída dos inimigos (final do PATH)
+            // Position the explosion of the exit for enemies (end of PATH)
             const exitPoint = PATH[PATH.length - 1];
             for (let i = 0; i < 20; i++) {
                 gameState.effects.push({
@@ -436,13 +436,13 @@
                     const effectiveSpeed = enemy.slowedUntil && Date.now() < enemy.slowedUntil ? 
                         enemy.speed * (enemy.slowFactor || 1) : enemy.speed;
                     
-                    // Processar dano de veneno
+                    // Process poison damage
                     if (enemy.poisonedUntil && Date.now() < enemy.poisonedUntil) {
                         if (Date.now() - enemy.lastPoisonDamage >= 1000) { // Dano a cada segundo
                             enemy.health -= enemy.poisonDamage;
                             enemy.lastPoisonDamage = Date.now();
                             
-                            // Efeito visual de dano por veneno
+                            // Visual effect for poison damage
                             for (let i = 0; i < 5; i++) {
                                 gameState.effects.push({
                                     type: 'poison',
@@ -533,7 +533,7 @@
 
         function updateProjectiles() {
             gameState.projectiles.forEach((projectile, pIndex) => {
-                // Adicionar rastro
+                // Add trail
                 projectile.trail.push({x: projectile.x, y: projectile.y});
                 if (projectile.trail.length > projectile.maxTrailLength) {
                     projectile.trail.shift();
@@ -551,7 +551,7 @@
                     if (distance < enemy.radius + 8) {
                         createHitEffect(enemy.x, enemy.y, projectile.damage);
                         
-                        // Dano em área para torre explosiva
+                        // Area damage for explosive tower
                         if (projectile.type === 'splash') {
                             gameState.enemies.forEach((nearbyEnemy, nearbyIndex) => {
                                 const nearbyDistance = Math.sqrt(
@@ -567,7 +567,7 @@
                                 }
                             });
                             
-                            // Efeito visual de explosão
+                            // Visual effect of explosion
                             for (let i = 0; i < 20; i++) {
                                 gameState.effects.push({
                                     type: 'explosion',
@@ -582,13 +582,13 @@
                                 });
                             }
                         } 
-                        // Efeito de gelo
+                        // Ice Effect
                         else if (projectile.type === 'slow') {
                             enemy.health -= projectile.damage;
                             enemy.slowedUntil = Date.now() + projectile.slowDuration;
                             enemy.slowFactor = projectile.slowFactor;
                             
-                            // Efeito visual de gelo
+                            // Visual Effect of ice
                             for (let i = 0; i < 10; i++) {
                                 gameState.effects.push({
                                     type: 'ice',
@@ -603,14 +603,14 @@
                                 });
                             }
                         }
-                        // Efeito de veneno
+                        // Poison Effect
                         else if (projectile.type === 'poison') {
                             enemy.health -= projectile.damage;
                             enemy.poisonedUntil = Date.now() + projectile.poisonDuration;
                             enemy.poisonDamage = projectile.poisonDamage;
                             enemy.lastPoisonDamage = Date.now();
                             
-                            // Efeito visual de veneno
+                            // Visual effect for poison
                             for (let i = 0; i < 15; i++) {
                                 gameState.effects.push({
                                     type: 'poison',
@@ -630,7 +630,7 @@
                         
                         gameState.projectiles.splice(pIndex, 1);
                         
-                        // Verificar inimigos mortos após dano (incluindo dano em área)
+                        // Verify dead enemies after damage (including area damage)
                         gameState.enemies.forEach((checkEnemy, checkIndex) => {
                             if (checkEnemy.health <= 0) {
                                 const money = 10 + gameState.wave * 2;
@@ -654,7 +654,7 @@
         }
 
         function updateEffects() {
-            // Limitar número de efeitos para performance
+            // Limit number of visual effects for preformance
             if (gameState.effects.length > 500) {
                 gameState.effects.splice(0, gameState.effects.length - 500);
             }
@@ -714,12 +714,12 @@
             }
         }
 
-        // Função para desenhar formas das torres
+        // Function for drawing the shape of the towers
         function drawTowerShape(x, y, size, shape, color) {
             ctx.save();
             ctx.translate(x, y);
             
-            // Sombra
+            // Shadow
             ctx.shadowColor = color;
             ctx.shadowBlur = 15;
             ctx.shadowOffsetX = 3;
@@ -794,7 +794,7 @@
         }
 
         function draw() {
-            // Clear canvas com gradiente
+            // Clear canvas with gradient
             const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
             gradient.addColorStop(0, '#0a0a0a');
             gradient.addColorStop(0.5, '#1a1a1a');
@@ -802,7 +802,7 @@
             ctx.fillStyle = gradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
-            // Draw grid simples (otimizado)
+            // Draw grid simples (optimized)
             ctx.strokeStyle = 'rgba(255, 107, 53, 0.15)';
             ctx.lineWidth = 0.5;
             
@@ -819,7 +819,7 @@
                 ctx.stroke();
             }
             
-            // Draw path com cor menos saturada
+            // Draw path with least saturated color
             ctx.strokeStyle = '#8B5A2B';
             ctx.lineWidth = 40;
             ctx.lineCap = 'round';
@@ -834,7 +834,7 @@
             }
             ctx.stroke();
             
-            // Linha interna do path
+            // Internal line of the path
             ctx.strokeStyle = '#A0522D';
             ctx.lineWidth = 30;
             ctx.shadowBlur = 0;
@@ -842,9 +842,9 @@
             
             ctx.shadowBlur = 0;
             
-            // Draw projectiles com rastros melhorados
+            // Draw projectiles with better trails
             gameState.projectiles.forEach(projectile => {
-                // Desenhar rastro contínuo
+                // Draw continuous trail
                 if (projectile.trail && projectile.trail.length > 1) {
                     ctx.strokeStyle = projectile.color;
                     ctx.shadowColor = projectile.color;
@@ -865,7 +865,7 @@
                     ctx.globalAlpha = 1;
                 }
                 
-                // Projétil principal com brilho intenso
+             // First projectile with intense sparkles
                 ctx.fillStyle = projectile.color;
                 ctx.shadowColor = projectile.color;
                 ctx.shadowBlur = 20;
@@ -873,7 +873,7 @@
                 ctx.arc(projectile.x, projectile.y, 6, 0, Math.PI * 2);
                 ctx.fill();
                 
-                // Núcleo brilhante
+                // Bright center
                 ctx.shadowBlur = 0;
                 ctx.fillStyle = '#ffffff';
                 ctx.beginPath();
@@ -883,7 +883,7 @@
             
             ctx.shadowBlur = 0;
             
-            // Draw towers com formas e brilhos
+            // Draw towers with shapes and brightness
             gameState.towers.forEach(tower => {
                 // Tower range (when hovering)
                 if (gameState.selectedTower) {
@@ -896,13 +896,13 @@
                 drawTowerShape(tower.x, tower.y, 18, tower.shape, tower.color);
             });
             
-            // Draw enemies com brilho e sombras
+            // Draw enemies with brightness and shadows
             gameState.enemies.forEach(enemy => {
                 // Verificar efeitos
                 const isSlowed = enemy.slowedUntil && Date.now() < enemy.slowedUntil;
                 const isPoisoned = enemy.poisonedUntil && Date.now() < enemy.poisonedUntil;
                 
-                // Determinar cor baseada no efeito
+                // Determinar color based on the effect
                 let color = '#ef4444';
                 let innerColor = '#ff6666';
                 if (isPoisoned) {
@@ -913,7 +913,7 @@
                     innerColor = '#67e8f9';
                 }
                 
-                // Sombra do inimigo
+                // Shadow of the enemy
                 ctx.fillStyle = color;
                 ctx.shadowColor = color;
                 ctx.shadowBlur = 15;
@@ -921,14 +921,14 @@
                 ctx.arc(enemy.x, enemy.y, enemy.radius, 0, Math.PI * 2);
                 ctx.fill();
                 
-                // Círculo interno
+                // Inner circle
                 ctx.shadowBlur = 0;
                 ctx.fillStyle = innerColor;
                 ctx.beginPath();
                 ctx.arc(enemy.x, enemy.y, enemy.radius * 0.7, 0, Math.PI * 2);
                 ctx.fill();
                 
-                // Efeitos extras
+                // Extra effects
                 if (isSlowed) {
                     ctx.fillStyle = 'rgba(6, 182, 212, 0.3)';
                     ctx.beginPath();
@@ -943,16 +943,16 @@
                     ctx.fill();
                 }
                 
-                // Health bar com brilho
+                // Health bar with brightness
                 const barWidth = enemy.radius * 2.5;
                 const barHeight = 6;
                 const healthPercent = enemy.health / enemy.maxHealth;
                 
-                // Fundo da barra
+                // Bar Background
                 ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
                 ctx.fillRect(enemy.x - barWidth/2, enemy.y - enemy.radius - 15, barWidth, barHeight);
                 
-                // Barra de vida
+                // Health Bar
                 const healthColor = healthPercent > 0.5 ? '#10b981' : healthPercent > 0.25 ? '#f59e0b' : '#ef4444';
                 ctx.fillStyle = healthColor;
                 ctx.shadowColor = healthColor;
@@ -1009,7 +1009,7 @@
                 drawTowerShape(centerX, centerY, 18, towerType.shape, isValid ? towerType.color : '#ef4444');
                 ctx.globalAlpha = 1;
                 
-                // Grid highlight com pulsação
+                // Pulsating grid highlight
                 ctx.strokeStyle = isValid ? '#10b981' : '#ef4444';
                 ctx.lineWidth = 4;
                 ctx.shadowColor = isValid ? '#10b981' : '#ef4444';
@@ -1059,7 +1059,7 @@
             requestAnimationFrame(gameLoop);
         }
 
-        // Funções para os novos sistemas
+        // Function for new systems
         let currentTowerBeingConfigured = null;
         let isPaused = false;
         let gameSpeed = 1;
@@ -1072,43 +1072,43 @@
             
             document.getElementById('towerUpgradeTitle').textContent = tower.name;
             document.getElementById('towerUpgradeContent').innerHTML = `
-                <p><strong>Descrição:</strong> ${tower.description}</p>
-                <p><strong>Custo Base:</strong> ${tower.cost}💰</p>
+                <p><strong>Description:</strong> ${tower.description}</p>
+                <p><strong>Initial Cost:</strong> ${tower.cost}💰</p>
             `;
             
-            // Atualizar valores dos stats
+            // Update values of the stats
             document.getElementById('damageValue').textContent = tower.damage + upgrades.damage;
             document.getElementById('rangeValue').textContent = tower.range + (upgrades.range * 20);
             document.getElementById('fireRateValue').textContent = Math.max(20, tower.fireRate - (upgrades.fireRate * 10));
             
-            document.getElementById('damageLevel').textContent = `Nível ${upgrades.damage + 1}`;
-            document.getElementById('rangeLevel').textContent = `Nível ${upgrades.range + 1}`;
-            document.getElementById('fireRateLevel').textContent = `Nível ${upgrades.fireRate + 1}`;
-            document.getElementById('specialLevel').textContent = `Nível ${upgrades.special + 1}`;
+            document.getElementById('damageLevel').textContent = `Level ${upgrades.damage + 1}`;
+            document.getElementById('rangeLevel').textContent = `Level ${upgrades.range + 1}`;
+            document.getElementById('fireRateLevel').textContent = `Level ${upgrades.fireRate + 1}`;
+            document.getElementById('specialLevel').textContent = `Level ${upgrades.special + 1}`;
             
-            // Atualizar custos
+            // Update costs
             document.getElementById('damageBuy').innerHTML = `+${towerType === 'strong' ? 10 : towerType === 'sniper' ? 15 : 5} (${50 + upgrades.damage * 25}💰)`;
             document.getElementById('rangeBuy').innerHTML = `+20 (${40 + upgrades.range * 20}💰)`;
             document.getElementById('fireRateBuy').innerHTML = `+10 (${60 + upgrades.fireRate * 30}💰)`;
             
-            // Configurar upgrade especial baseado no tipo
+            // Configure special upgrade based on type
             const specialUpgrade = document.getElementById('specialUpgrade');
             const specialLabel = specialUpgrade.querySelector('label');
             const specialValue = document.getElementById('specialValue');
             const specialBuy = document.getElementById('specialBuy');
             
             if (towerType === 'splash') {
-                specialLabel.innerHTML = `Raio Explosão <span id="specialLevel">Nível ${upgrades.special + 1}</span>`;
+                specialLabel.innerHTML = `Exploding Ray <span id="specialLevel">Level ${upgrades.special + 1}</span>`;
                 specialValue.textContent = 50 + (upgrades.special * 15);
                 specialBuy.innerHTML = `+15 (${80 + upgrades.special * 40}💰)`;
             } else if (towerType === 'slow') {
-                specialLabel.innerHTML = `Intensidade Gelo <span id="specialLevel">Nível ${upgrades.special + 1}</span>`;
+                specialLabel.innerHTML = `Ice Intensity <span id="specialLevel">Level ${upgrades.special + 1}</span>`;
                 specialValue.textContent = `${Math.round((0.5 - upgrades.special * 0.1) * 100)}%`;
                 specialBuy.innerHTML = `+10% (${80 + upgrades.special * 40}💰)`;
             } else if (towerType === 'poison') {
-                specialLabel.innerHTML = `Intensidade Veneno <span id="specialLevel">Nível ${upgrades.special + 1}</span>`;
+                specialLabel.innerHTML = `Poison Intensity <span id="specialLevel">Level ${upgrades.special + 1}</span>`;
                 specialValue.textContent = `${3 + upgrades.special}/s por ${4 + upgrades.special}s`;
-                specialBuy.innerHTML = `+1 dano/s +1s (${80 + upgrades.special * 40}💰)`;
+                specialBuy.innerHTML = `+1 damage/s +1s (${80 + upgrades.special * 40}💰)`;
             } else {
                 specialUpgrade.style.display = 'none';
             }
@@ -1155,26 +1155,26 @@
             
             if (gameState.sellMode) {
                 btn.classList.add('ring-2', 'ring-red-500');
-                btn.textContent = '🗑️ Modo ATIVO';
+                btn.textContent = '🗑️ ACTIVE';
                 gameState.selectedTower = null;
-                // Remover seleção de torres
+                // Remove selected tower
                 document.querySelectorAll('[id$="TowerBtn"]').forEach(btn => {
                     btn.classList.remove('ring-2', 'ring-primary');
                 });
             } else {
                 btn.classList.remove('ring-2', 'ring-red-500');
-                btn.textContent = '🗑️ Excluir';
+                btn.textContent = '🗑️ Remove';
             }
         }
 
         function sellTower(towerIndex) {
             if (towerIndex >= 0 && towerIndex < gameState.towers.length) {
                 const soldTower = gameState.towers[towerIndex];
-                const sellPrice = Math.floor(TOWER_TYPES[soldTower.type].cost * 0.7); // 70% do valor
+                const sellPrice = Math.floor(TOWER_TYPES[soldTower.type].cost * 0.7); // 70% value
                 gameState.money += sellPrice;
                 gameState.towers.splice(towerIndex, 1);
                 updateDisplay();
-                // NÃO desativa mais automaticamente o modo de venda
+                // Does not exit sell mode automatically
             }
         }
 
@@ -1203,11 +1203,11 @@
             const speedControls = document.getElementById('speedControls');
             
             if (isPaused) {
-                btn.innerHTML = '▶️ Continuar';
+                btn.innerHTML = '▶️ Continue';
                 btn.classList.add('ring-2', 'ring-primary');
                 speedControls.classList.remove('hidden');
             } else {
-                btn.innerHTML = '⏸️ Pausar';
+                btn.innerHTML = '⏸️ Pause';
                 btn.classList.remove('ring-2', 'ring-primary');
                 speedControls.classList.add('hidden');
             }
@@ -1268,7 +1268,7 @@
                             value = distance;
                             break;
                         case 'strongest':
-                            value = -enemy.health; // Negativo para pegar o maior
+                            value = -enemy.health; // Negative to get the largest
                             break;
                         case 'weakest':
                             value = enemy.health;
@@ -1287,7 +1287,7 @@
             return target;
         }
 
-        // Atualizar função updateTowers para usar novo sistema de alvos
+        // Update updateTowers to use new target systems
         function updateTowers() {
             gameState.towers.forEach(tower => {
                 tower.lastFire += gameSpeed;
@@ -1308,7 +1308,7 @@
         // Initialize UI
         updateUI();
 
-        // Animar contadores quando a página carrega
+        // Animate counter when the page loads
         function animateCounters() {
             const counters = document.querySelectorAll('.animated-counter');
             
@@ -1328,7 +1328,7 @@
             });
         }
 
-        // Observador de interseção para animar quando a seção aparecer na tela
+        // Intersection observer to animate when the section appears on screen
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1338,7 +1338,7 @@
             });
         });
 
-        // Inicializar observer quando a página carregar
+        // Initialize observer when the page loads
         document.addEventListener('DOMContentLoaded', () => {
             const statsSection = document.querySelector('.stats-card').closest('section');
             if (statsSection) {
