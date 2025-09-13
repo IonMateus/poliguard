@@ -1,5 +1,14 @@
         // Game Variables
         let canvas, ctx;
+        let camera = { x: 0, y: 0 };
+        let isDragging = false;
+        let dragStart = { x: 0, y: 0 };
+        let cameraStart = { x: 0, y: 0 };
+        let zoom = 0.5;
+        const MIN_ZOOM = 0.5;
+        const MAX_ZOOM = 1.5;
+        const MAP_WIDTH = 2000;
+        const MAP_HEIGHT = 1200;
         let gameRunning = false;
         let gameState = {
             money: 100,
@@ -130,17 +139,56 @@
         function setupEventListeners() {
             canvas.addEventListener('mousemove', (e) => {
                 const rect = canvas.getBoundingClientRect();
-                gameState.mouseX = e.clientX - rect.left;
-                gameState.mouseY = e.clientY - rect.top;
+                const mouseX = (e.clientX - rect.left) / zoom + camera.x;
+                const mouseY = (e.clientY - rect.top) / zoom + camera.y;
+                gameState.mouseX = mouseX;
+                gameState.mouseY = mouseY;
+                if (isDragging) {
+                    camera.x = cameraStart.x + (dragStart.x - e.clientX) / zoom;
+                    camera.y = cameraStart.y + (dragStart.y - e.clientY) / zoom;
+                    camera.x = Math.max(0, Math.min(camera.x, MAP_WIDTH - canvas.width / zoom));
+                    camera.y = Math.max(0, Math.min(camera.y, MAP_HEIGHT - canvas.height / zoom));
+                }
+            });
+            canvas.addEventListener('mousedown', (e) => {
+                if (e.button === 0) {
+                    isDragging = true;
+                    dragStart.x = e.clientX;
+                    dragStart.y = e.clientY;
+                    cameraStart.x = camera.x;
+                    cameraStart.y = camera.y;
+                }
+            });
+            canvas.addEventListener('mouseup', (e) => {
+                if (e.button === 0) {
+                    isDragging = false;
+                }
+            });
+            canvas.addEventListener('mouseleave', () => {
+                isDragging = false;
+            });
+            canvas.addEventListener('wheel', (e) => {
+                const prevZoom = zoom;
+                if (e.deltaY < 0) {
+                    zoom = Math.min(MAX_ZOOM, zoom + 0.1);
+                } else {
+                    zoom = Math.max(MIN_ZOOM, zoom - 0.1);
+                }
+                const rect = canvas.getBoundingClientRect();
+                const mouseX = (e.clientX - rect.left) / prevZoom + camera.x;
+                const mouseY = (e.clientY - rect.top) / prevZoom + camera.y;
+                camera.x = mouseX - (e.clientX - rect.left) / zoom;
+                camera.y = mouseY - (e.clientY - rect.top) / zoom;
+                camera.x = Math.max(0, Math.min(camera.x, MAP_WIDTH - canvas.width / zoom));
+                camera.y = Math.max(0, Math.min(camera.y, MAP_HEIGHT - canvas.height / zoom));
+                e.preventDefault();
             });
 
             canvas.addEventListener('click', (e) => {
                 if (!gameRunning) return;
-                
                 const rect = canvas.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
+                const x = (e.clientX - rect.left) / zoom + camera.x;
+                const y = (e.clientY - rect.top) / zoom + camera.y;
                 if (gameState.sellMode) {
                     // Sell Mode: find clicked tower
                     let towerIndex = -1;
@@ -152,7 +200,6 @@
                             towerIndex = index;
                         }
                     });
-                    
                     if (towerIndex >= 0) {
                         sellTower(towerIndex);
                     }
@@ -809,22 +856,24 @@
             gradient.addColorStop(0.5, '#1a1a1a');
             gradient.addColorStop(1, '#0a0a0a');
             ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.save();
+            ctx.setTransform(zoom, 0, 0, zoom, -camera.x * zoom, -camera.y * zoom);
+            ctx.fillRect(0, 0, MAP_WIDTH, MAP_HEIGHT);
             
             // Draw grid simples (optimized)
             ctx.strokeStyle = 'rgba(255, 107, 53, 0.15)';
             ctx.lineWidth = 0.5;
             
-            for (let x = 0; x <= canvas.width; x += GRID_SIZE) {
+            for (let x = 0; x <= MAP_WIDTH; x += GRID_SIZE) {
                 ctx.beginPath();
                 ctx.moveTo(x, 0);
-                ctx.lineTo(x, canvas.height);
+                ctx.lineTo(x, MAP_HEIGHT);
                 ctx.stroke();
             }
-            for (let y = 0; y <= canvas.height; y += GRID_SIZE) {
+            for (let y = 0; y <= MAP_HEIGHT; y += GRID_SIZE) {
                 ctx.beginPath();
                 ctx.moveTo(0, y);
-                ctx.lineTo(canvas.width, y);
+                ctx.lineTo(MAP_WIDTH, y);
                 ctx.stroke();
             }
             
@@ -1003,9 +1052,9 @@
                 const gridY = Math.floor(gameState.mouseY / GRID_SIZE) * GRID_SIZE;
                 const centerX = gridX + GRID_SIZE / 2;
                 const centerY = gridY + GRID_SIZE / 2;
-                
                 const towerType = TOWER_TYPES[gameState.selectedTower];
                 const isValid = isValidTowerPosition(gridX, gridY);
+            ctx.restore();
                 
                 // Range preview
                 ctx.fillStyle = isValid ? `${towerType.color}30` : '#ef444430';
