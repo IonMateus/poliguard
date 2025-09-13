@@ -1,8 +1,13 @@
+> ⚠️ **Note (until September 19):**  
+> I’ll have reduced activity while preparing for an important event.  
+> Don’t worry — feel free to open issues or submit PRs, and I’ll check everything once I’m back. Thanks for keeping the project moving! 🚀
+
+---
+
 # PoliGuard 🏰🟧
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)
 [![Play PoliGuard on Itch.io](https://img.shields.io/badge/Play-Now%20on%20Itch.io-ff5c5c?style=for-the-badge&logo=itch.io&logoColor=white)](https://ionmateus.itch.io/poliguard)
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
-
 
 PoliGuard is a tactical defense game where you build strategic towers to eliminate enemy threats. This is an open-source project, with a focus on clear gameplay and robust functionality.
 
