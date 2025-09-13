@@ -14,7 +14,8 @@ PoliGuard is a tactical defense game where you build strategic towers to elimina
 🎮 **Play PoliGuard now on [Itch.io](https://ionmateus.itch.io/poliguard) or [My Website](https://ionmateus.github.io/poliguard)!**
 
 
-<img width="1326" height="683" alt="image" src="https://github.com/user-attachments/assets/be8d789e-c22b-4cfd-95f7-3e1ef6813ed5" />
+<img width="1326" height="683" alt="image" src="assets/homepage.png" />
+
 
 ---
 
@@ -24,6 +25,34 @@ PoliGuard is an **open-source** project. The goal is to develop a functional and
 
 ## 🚀 How to Contribute
 The development of PoliGuard is **open to contributions**. Developers of all levels are welcome to help improve the game.
+
+---
+
+## 📸 Screenshots
+![Gameplay Screenshot](assets/screenshot.png)
+![Home Page](assets/homepage.png)
+
+---
+## 📥 How to Run
+1. Fork and clone the repository:
+git clone https://github.com/demagalawrence/poliguard.git
+cd poliguard
+
+
+**Key gameplay mechanics:**  
+- **Towers**: Different towers with unique abilities.  
+- **Enemies**: Waves of enemies with increasing difficulty.  
+- **Wave Progression**: Each wave becomes harder, requiring strategy.  
+- **Countdown & Progress Bar**: Visual indication of remaining time before each wave.  
+
+---
+## 🎮 How to Play
+- Place towers strategically to defend against waves of enemies.  
+- Monitor the countdown and progress bar before each wave.  
+- Survive as many waves as possible to maximize your score.  
+- Upgrade towers and plan tower placement carefully.  
+- Experiment with different tower combinations to optimize defense.
+
 
 ### Get started now:
 1. **Fork** the repository.
