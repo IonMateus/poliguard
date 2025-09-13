@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tower Defense - Defend Your Base</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
+        rel="stylesheet">
     <script src="./tailwind_config.js"></script>
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body class="bg-black text-white">
-   <!-- Home Page -->
+    <!-- Home Page -->
     <div id="homePage" class="min-h-screen">
         <!-- Header -->
         <header class="bg-black/90 backdrop-blur-sm border-b border-gray-800 sticky top-0 z-50">
@@ -24,7 +28,8 @@
                         <a href="#funcionalidades" class="hover:text-primary transition-colors rounded-lg">Features</a>
                         <a href="#depoimentos" class="hover:text-primary transition-colors rounded-lg">Testimonials</a>
                     </div>
-                    <button onclick="startGame()" class="bg-primary hover:bg-orange-600 px-6 py-2 rounded-lg font-semibold transition-all transform hover:scale-105 glow">
+                    <button onclick="startGame()"
+                        class="bg-primary hover:bg-orange-600 px-6 py-2 rounded-lg font-semibold transition-all transform hover:scale-105 glow">
                         Play Now
                     </button>
                 </nav>
@@ -34,7 +39,7 @@
         <!-- Hero Section -->
         <section class="mesh-bg min-h-screen flex items-center relative overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent"></div>
-            
+
             <!-- Floating Elements -->
             <div class="floating-elements">
                 <div class="floating-element text-primary text-4xl" style="left: 10%; animation-delay: 0s;">🏰</div>
@@ -47,43 +52,63 @@
                 <div class="floating-element text-pink-400 text-3xl" style="left: 80%; animation-delay: 14s;">🌟</div>
                 <div class="floating-element text-cyan-400 text-2xl" style="left: 90%; animation-delay: 16s;">❄️</div>
             </div>
-            
+
             <!-- Futuristic Floating Numbers -->
             <div class="absolute inset-0 font-orbitron text-primary/10 text-6xl font-bold overflow-hidden">
                 <div class="absolute top-20 left-10 animate-pulse">01</div>
                 <div class="absolute top-40 right-20 animate-pulse" style="animation-delay: 0.5s;">10</div>
                 <div class="absolute bottom-40 left-20 animate-pulse" style="animation-delay: 1s;">11</div>
                 <div class="absolute bottom-20 right-40 animate-pulse" style="animation-delay: 1.5s;">00</div>
-                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse text-8xl" style="animation-delay: 2s;">101</div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse text-8xl"
+                    style="animation-delay: 2s;">101</div>
                 <div class="absolute top-32 left-1/3 animate-pulse" style="animation-delay: 2.5s;">001</div>
                 <div class="absolute bottom-32 right-1/3 animate-pulse" style="animation-delay: 3s;">110</div>
             </div>
-            
+
             <div class="container mx-auto px-6 py-20 relative z-10">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div class="space-y-8">
                         <h1 class="text-5xl lg:text-7xl font-orbitron font-black leading-tight">
                             <span class="text-white">DEFEND</span><br>
-                            <span class="text-primary bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent">
-                               YOUR BASE
+                            <span
+                                class="text-primary bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent">
+                                YOUR BASE
                             </span>
                         </h1>
                         <p class="text-xl text-gray-300 leading-relaxed font-inter">
-                            Tactical defense system. Build strategic towers, 
+                            Tactical defense system. Build strategic towers,
                             eliminate hostile threats, and prove your superiority on the digital battlefield.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4">
-                            <button onclick="startGame()" class="bg-primary hover:bg-orange-600 px-8 py-4 rounded-xl font-orbitron font-bold text-lg transition-all transform hover:scale-105 glow">
+                            <button onclick="startGame()"
+                                class="bg-primary hover:bg-orange-600 px-8 py-4 rounded-xl font-orbitron font-bold text-lg transition-all transform hover:scale-105 glow">
                                 🎮 START MISSION
                             </button>
-                            <button onclick="document.getElementById('sobre').scrollIntoView({behavior: 'smooth'})" class="border-2 border-primary text-primary hover:bg-primary hover:text-black px-8 py-4 rounded-xl font-orbitron font-bold text-lg transition-all">
+                            <button onclick="document.getElementById('sobre').scrollIntoView({behavior: 'smooth'})"
+                                class="border-2 border-primary text-primary hover:bg-primary hover:text-black px-8 py-4 rounded-xl font-orbitron font-bold text-lg transition-all">
                                 📖 BRIEFING
+                            </button>
+                            <button class="group font-orbitron">
+                                <div
+                                    class="flex flex-col items-center justify-center w-full border border-t-primary border-b-primary rounded-xl p-3">
+                                    <!-- TOP PART: github icon + arrow -->
+                                    <div class="flex w-full items-center justify-between gap-2">
+                                        <img src="/public/github.png" alt="Github Icon" class="w-7 h-7">
+                                        <img src="/public/right-arrow.png" alt="Right Arrow"
+                                            class="w-5 h-5 transition-transform ease-in-out duration-200 group-hover:-rotate-45">
+                                    </div>
+
+                                    <!-- BOTTOM PART: stars and forks count -->
+                                    <div id="content" class="flex justify-center gap-3 mt-2 text-sm">
+                                    </div>
+                                </div>
                             </button>
                         </div>
                     </div>
                     <div class="relative">
                         <div class="relative rounded-2xl overflow-hidden border border-gray-700 glow">
-                            <img src="https://picsum.photos/600/400?random=1" alt="Tower Defense Preview" class="w-full h-auto">
+                            <img src="https://picsum.photos/600/400?random=1" alt="Tower Defense Preview"
+                                class="w-full h-auto">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                             <div class="absolute bottom-4 left-4 right-4">
                                 <div class="bg-black/70 rounded-lg p-4 backdrop-blur-sm">
@@ -139,15 +164,17 @@
                         What <span class="text-primary">this is</span>
                     </h2>
                     <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                        A real-time strategy game where your mission is to defend your base against endless waves of enemies
+                        A real-time strategy game where your mission is to defend your base against endless waves of
+                        enemies
                     </p>
                 </div>
-                
+
                 <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
                     <div class="space-y-6">
                         <h3 class="text-3xl font-bold text-primary">🏗️ Strategic Construction</h3>
                         <p class="text-gray-300 text-lg leading-relaxed">
-                            Position your towers in strategic spots on the map. Every location could be a difference between life or death. Use the ground in your favor and create inpenetrable defenses.
+                            Position your towers in strategic spots on the map. Every location could be a difference
+                            between life or death. Use the ground in your favor and create inpenetrable defenses.
                         </p>
                         <ul class="space-y-3 text-gray-300">
                             <li class="flex items-center gap-3">
@@ -165,20 +192,23 @@
                         </ul>
                     </div>
                     <div class="relative">
-                        <img src="https://picsum.photos/500/300?random=2" alt="Construção de Torres" class="rounded-xl border border-gray-700">
+                        <img src="https://picsum.photos/500/300?random=2" alt="Construção de Torres"
+                            class="rounded-xl border border-gray-700">
                         <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-xl"></div>
                     </div>
                 </div>
 
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div class="relative order-2 lg:order-1">
-                        <img src="https://picsum.photos/500/300?random=3" alt="Ondas de Inimigos" class="rounded-xl border border-gray-700">
+                        <img src="https://picsum.photos/500/300?random=3" alt="Ondas de Inimigos"
+                            class="rounded-xl border border-gray-700">
                         <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-xl"></div>
                     </div>
                     <div class="space-y-6 order-1 lg:order-2">
                         <h3 class="text-3xl font-bold text-primary">⚔️ Challenging Waves</h3>
                         <p class="text-gray-300 text-lg leading-relaxed">
-                            Battle enemies that become progressively more powerful and numerous. With every wave comes new challenges 
+                            Battle enemies that become progressively more powerful and numerous. With every wave comes
+                            new challenges
                             that test your strategies and ability to adapt.
                         </p>
                         <ul class="space-y-3 text-gray-300">
@@ -222,9 +252,11 @@
                             </div>
                         </div>
                         <p class="text-gray-300 mb-4">
-                            Construct and evolve your defenses with different types of towers, each one with unique and devistating abilities.
+                            Construct and evolve your defenses with different types of towers, each one with unique and
+                            devistating abilities.
                         </p>
-                        <div class="text-xs text-primary">• 6 Unique Types • Multiple Upgrades • Infinite Strategies</div>
+                        <div class="text-xs text-primary">• 6 Unique Types • Multiple Upgrades • Infinite Strategies
+                        </div>
                     </div>
 
                     <div class="feature-card p-8 rounded-2xl tech-border">
@@ -238,7 +270,8 @@
                         <p class="text-gray-300 mb-4">
                             Battle endless waves of enemies with increasing difficulty. How long will you survive?
                         </p>
-                        <div class="text-xs text-primary">• Progressive Difficulty • Intellegent Enemies • Infinite Challenge</div>
+                        <div class="text-xs text-primary">• Progressive Difficulty • Intellegent Enemies • Infinite
+                            Challenge</div>
                     </div>
 
                     <div class="feature-card p-8 rounded-2xl tech-border">
@@ -278,7 +311,8 @@
                             </div>
                         </div>
                         <p class="text-gray-300 mb-4">
-                            Simple and responsive controls that allow you to focus on your strategy without unnecessary complications.
+                            Simple and responsive controls that allow you to focus on your strategy without unnecessary
+                            complications.
                         </p>
                         <div class="text-xs text-primary">• Responsive Design • Smooth Controlls • Optimized UX</div>
                     </div>
@@ -292,7 +326,8 @@
                             </div>
                         </div>
                         <p class="text-gray-300 mb-4">
-                            Smooth and responsive playability with smooth animations that captures every exciting moment.
+                            Smooth and responsive playability with smooth animations that captures every exciting
+                            moment.
                         </p>
                         <div class="text-xs text-primary">• 60 FPS • Realistic Physics • Smooth Animations</div>
                     </div>
@@ -318,7 +353,8 @@
                             <div class="flex text-primary text-xl">★★★★★</div>
                         </div>
                         <p class="text-gray-300 mb-6 text-lg">
-                            "Incredible! Hours of fun guaranteed. The mechanics are simple, making it perfect for relaxing after work."
+                            "Incredible! Hours of fun guaranteed. The mechanics are simple, making it perfect for
+                            relaxing after work."
                         </p>
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center font-bold">
@@ -336,7 +372,7 @@
                             <div class="flex text-primary text-xl">★★★★★</div>
                         </div>
                         <p class="text-gray-300 mb-6 text-lg">
-                            "One of the best games I have ever played! The progression is perfect 
+                            "One of the best games I have ever played! The progression is perfect
                             and always makes me want to play 'just one more round'."
                         </p>
                         <div class="flex items-center gap-3">
@@ -355,7 +391,7 @@
                             <div class="flex text-primary text-xl">★★★★★</div>
                         </div>
                         <p class="text-gray-300 mb-6 text-lg">
-                            "Beautiful interface and fluid playability. My children also love it! 
+                            "Beautiful interface and fluid playability. My children also love it!
                             This is the type of game that the whole family can enjoy together."
                         </p>
                         <div class="flex items-center gap-3">
@@ -382,7 +418,7 @@
                             The best tower defense game you will find. Fun guaranteed for people of all ages.
                         </p>
                     </div>
-                    
+
                     <div class="space-y-4">
                         <h4 class="font-semibold text-lg">Contact</h4>
                         <div class="space-y-2 text-gray-400">
@@ -391,7 +427,7 @@
                             <p>📍 -</p>
                         </div>
                     </div>
-                    
+
                     <div class="space-y-4">
                         <h4 class="font-semibold text-lg">Quick Links</h4>
                         <div class="space-y-2 text-gray-400">
@@ -400,7 +436,7 @@
                             <a href="#depoimentos" class="block hover:text-primary transition-colors">Testimonials</a>
                         </div>
                     </div>
-                    
+
                     <div class="space-y-4">
                         <h4 class="font-semibold text-lg">Social Media</h4>
                         <div class="flex space-x-4">
@@ -411,7 +447,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
                     <p>&copy; 2024 Tower Defense. All rights reserved. Made with ❤️ for gamers.</p>
                 </div>
@@ -426,7 +462,8 @@
             <div class="container mx-auto px-4 py-3">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center space-x-6">
-                        <button onclick="goHome()" class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors glow">
+                        <button onclick="goHome()"
+                            class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors glow">
                             ← Return
                         </button>
                         <div class="flex items-center space-x-4 text-sm">
@@ -450,22 +487,28 @@
                                 <span class="text-primary">⏱️</span>
                                 <span>Next wave: <span id="countdown" class="font-bold text-primary">5</span></span>
                                 <div class="w-16 h-2 bg-gray-700 rounded-full overflow-hidden">
-                                    <div id="progressBar" class="h-full bg-primary rounded-full" style="width: 100%;"></div>
+                                    <div id="progressBar" class="h-full bg-primary rounded-full" style="width: 100%;">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="flex items-center gap-4">
-                        <button id="sellModeBtn" onclick="toggleSellMode()" class="bg-gray-700/50 hover:bg-red-600/80 border border-gray-600/50 px-3 py-2 rounded-lg transition-all opacity-70 hover:opacity-100 text-xs font-semibold">
+                        <button id="sellModeBtn" onclick="toggleSellMode()"
+                            class="bg-gray-700/50 hover:bg-red-600/80 border border-gray-600/50 px-3 py-2 rounded-lg transition-all opacity-70 hover:opacity-100 text-xs font-semibold">
                             🗑️ Remove
                         </button>
-                        <button id="pauseBtn" onclick="togglePause()" class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors glow text-sm font-semibold">
+                        <button id="pauseBtn" onclick="togglePause()"
+                            class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors glow text-sm font-semibold">
                             ⏸️ Pause
                         </button>
                         <div id="speedControls" class="hidden flex items-center gap-2">
-                            <button id="slowBtn" onclick="changeGameSpeed(0.5)" class="bg-blue-700 hover:bg-blue-600 px-3 py-2 rounded text-xs">0.5x</button>
-                            <button id="normalBtn" onclick="changeGameSpeed(1)" class="bg-gray-700 hover:bg-gray-600 px-3 py-2 rounded text-xs">1x</button>
-                            <button id="fastBtn" onclick="changeGameSpeed(2)" class="bg-orange-700 hover:bg-orange-600 px-3 py-2 rounded text-xs">2x</button>
+                            <button id="slowBtn" onclick="changeGameSpeed(0.5)"
+                                class="bg-blue-700 hover:bg-blue-600 px-3 py-2 rounded text-xs">0.5x</button>
+                            <button id="normalBtn" onclick="changeGameSpeed(1)"
+                                class="bg-gray-700 hover:bg-gray-600 px-3 py-2 rounded text-xs">1x</button>
+                            <button id="fastBtn" onclick="changeGameSpeed(2)"
+                                class="bg-orange-700 hover:bg-orange-600 px-3 py-2 rounded text-xs">2x</button>
                         </div>
                     </div>
                 </div>
@@ -476,106 +519,127 @@
         <div class="game-ui fixed top-20 left-0 w-64 h-full z-40 p-4">
             <h3 class="text-lg font-bold text-primary mb-4">⚔️ Available Towers</h3>
             <div class="space-y-3 overflow-y-auto max-h-[calc(100vh-8rem)] pr-2">
-                <div id="basicTowerBtn" onclick="selectTower('basic')" class="w-full bg-gray-800/80 hover:bg-gray-700 border border-gray-600 p-3 rounded-lg transition-all cursor-pointer">
+                <div id="basicTowerBtn" onclick="selectTower('basic')"
+                    class="w-full bg-gray-800/80 hover:bg-gray-700 border border-gray-600 p-3 rounded-lg transition-all cursor-pointer">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-3">
                             <div class="text-lg">⭐</div>
                             <div>
-                                <div class="font-medium text-sm text-white">Basic Tower <span class="text-xs text-gray-500">[1]</span></div>
+                                <div class="font-medium text-sm text-white">Basic Tower <span
+                                        class="text-xs text-gray-500">[1]</span></div>
                                 <div class="text-xs text-gray-400">50💰</div>
                             </div>
                         </div>
-                        <button onclick="event.stopPropagation(); showTowerUpgrade('basic')" class="w-6 h-6 bg-primary/40 hover:bg-primary/60 rounded-full text-xs text-white flex items-center justify-center transition-colors">
+                        <button onclick="event.stopPropagation(); showTowerUpgrade('basic')"
+                            class="w-6 h-6 bg-primary/40 hover:bg-primary/60 rounded-full text-xs text-white flex items-center justify-center transition-colors">
                             ℹ️
                         </button>
                     </div>
                 </div>
 
-                <div id="fastTowerBtn" onclick="selectTower('fast')" class="w-full bg-gray-800/80 hover:bg-gray-700 border border-gray-600 p-3 rounded-lg transition-all cursor-pointer">
+                <div id="fastTowerBtn" onclick="selectTower('fast')"
+                    class="w-full bg-gray-800/80 hover:bg-gray-700 border border-gray-600 p-3 rounded-lg transition-all cursor-pointer">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-3">
                             <div class="text-lg">⬜</div>
                             <div>
-                                <div class="font-medium text-sm text-white">Fast Tower <span class="text-xs text-gray-500">[2]</span></div>
+                                <div class="font-medium text-sm text-white">Fast Tower <span
+                                        class="text-xs text-gray-500">[2]</span></div>
                                 <div class="text-xs text-gray-400">75💰</div>
                             </div>
                         </div>
-                        <button onclick="event.stopPropagation(); showTowerUpgrade('fast')" class="w-6 h-6 bg-primary/40 hover:bg-primary/60 rounded-full text-xs text-white flex items-center justify-center transition-colors">
+                        <button onclick="event.stopPropagation(); showTowerUpgrade('fast')"
+                            class="w-6 h-6 bg-primary/40 hover:bg-primary/60 rounded-full text-xs text-white flex items-center justify-center transition-colors">
                             ℹ️
                         </button>
                     </div>
                 </div>
 
-                <div id="strongTowerBtn" onclick="selectTower('strong')" class="w-full bg-gray-800/80 hover:bg-gray-700 border border-gray-600 p-3 rounded-lg transition-all cursor-pointer">
+                <div id="strongTowerBtn" onclick="selectTower('strong')"
+                    class="w-full bg-gray-800/80 hover:bg-gray-700 border border-gray-600 p-3 rounded-lg transition-all cursor-pointer">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-3">
                             <div class="text-lg">⬟</div>
                             <div>
-                                <div class="font-medium text-sm text-white">Strong Tower <span class="text-xs text-gray-500">[3]</span></div>
+                                <div class="font-medium text-sm text-white">Strong Tower <span
+                                        class="text-xs text-gray-500">[3]</span></div>
                                 <div class="text-xs text-gray-400">100💰</div>
                             </div>
                         </div>
-                        <button onclick="event.stopPropagation(); showTowerUpgrade('strong')" class="w-6 h-6 bg-primary/40 hover:bg-primary/60 rounded-full text-xs text-white flex items-center justify-center transition-colors">
+                        <button onclick="event.stopPropagation(); showTowerUpgrade('strong')"
+                            class="w-6 h-6 bg-primary/40 hover:bg-primary/60 rounded-full text-xs text-white flex items-center justify-center transition-colors">
                             ℹ️
                         </button>
                     </div>
                 </div>
 
-                <div id="sniperTowerBtn" onclick="selectTower('sniper')" class="w-full bg-gray-800/80 hover:bg-gray-700 border border-gray-600 p-3 rounded-lg transition-all cursor-pointer">
+                <div id="sniperTowerBtn" onclick="selectTower('sniper')"
+                    class="w-full bg-gray-800/80 hover:bg-gray-700 border border-gray-600 p-3 rounded-lg transition-all cursor-pointer">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-3">
                             <div class="text-lg">💎</div>
                             <div>
-                                <div class="font-medium text-sm text-white">Sniper Tower <span class="text-xs text-gray-500">[4]</span></div>
+                                <div class="font-medium text-sm text-white">Sniper Tower <span
+                                        class="text-xs text-gray-500">[4]</span></div>
                                 <div class="text-xs text-gray-400">150💰</div>
                             </div>
                         </div>
-                        <button onclick="event.stopPropagation(); showTowerUpgrade('sniper')" class="w-6 h-6 bg-primary/40 hover:bg-primary/60 rounded-full text-xs text-white flex items-center justify-center transition-colors">
+                        <button onclick="event.stopPropagation(); showTowerUpgrade('sniper')"
+                            class="w-6 h-6 bg-primary/40 hover:bg-primary/60 rounded-full text-xs text-white flex items-center justify-center transition-colors">
                             ℹ️
                         </button>
                     </div>
                 </div>
 
-                <div id="splashTowerBtn" onclick="selectTower('splash')" class="w-full bg-gray-800/80 hover:bg-gray-700 border border-gray-600 p-3 rounded-lg transition-all cursor-pointer">
+                <div id="splashTowerBtn" onclick="selectTower('splash')"
+                    class="w-full bg-gray-800/80 hover:bg-gray-700 border border-gray-600 p-3 rounded-lg transition-all cursor-pointer">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-3">
                             <div class="text-lg">💥</div>
                             <div>
-                                <div class="font-medium text-sm text-white">Explosive Tower <span class="text-xs text-gray-500">[5]</span></div>
+                                <div class="font-medium text-sm text-white">Explosive Tower <span
+                                        class="text-xs text-gray-500">[5]</span></div>
                                 <div class="text-xs text-gray-400">120💰</div>
                             </div>
                         </div>
-                        <button onclick="event.stopPropagation(); showTowerUpgrade('splash')" class="w-6 h-6 bg-primary/40 hover:bg-primary/60 rounded-full text-xs text-white flex items-center justify-center transition-colors">
+                        <button onclick="event.stopPropagation(); showTowerUpgrade('splash')"
+                            class="w-6 h-6 bg-primary/40 hover:bg-primary/60 rounded-full text-xs text-white flex items-center justify-center transition-colors">
                             ℹ️
                         </button>
                     </div>
                 </div>
 
-                <div id="slowTowerBtn" onclick="selectTower('slow')" class="w-full bg-gray-800/80 hover:bg-gray-700 border border-gray-600 p-3 rounded-lg transition-all cursor-pointer">
+                <div id="slowTowerBtn" onclick="selectTower('slow')"
+                    class="w-full bg-gray-800/80 hover:bg-gray-700 border border-gray-600 p-3 rounded-lg transition-all cursor-pointer">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-3">
                             <div class="text-lg">❄️</div>
                             <div>
-                                <div class="font-medium text-sm text-white">Ice Tower <span class="text-xs text-gray-500">[6]</span></div>
+                                <div class="font-medium text-sm text-white">Ice Tower <span
+                                        class="text-xs text-gray-500">[6]</span></div>
                                 <div class="text-xs text-gray-400">90💰</div>
                             </div>
                         </div>
-                        <button onclick="event.stopPropagation(); showTowerUpgrade('slow')" class="w-6 h-6 bg-primary/40 hover:bg-primary/60 rounded-full text-xs text-white flex items-center justify-center transition-colors">
+                        <button onclick="event.stopPropagation(); showTowerUpgrade('slow')"
+                            class="w-6 h-6 bg-primary/40 hover:bg-primary/60 rounded-full text-xs text-white flex items-center justify-center transition-colors">
                             ℹ️
                         </button>
                     </div>
                 </div>
 
-                <div id="poisonTowerBtn" onclick="selectTower('poison')" class="w-full bg-gray-800/80 hover:bg-gray-700 border border-gray-600 p-3 rounded-lg transition-all cursor-pointer">
+                <div id="poisonTowerBtn" onclick="selectTower('poison')"
+                    class="w-full bg-gray-800/80 hover:bg-gray-700 border border-gray-600 p-3 rounded-lg transition-all cursor-pointer">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-3">
                             <div class="text-lg">☢️</div>
                             <div>
-                                <div class="font-medium text-sm text-white">Poison Tower <span class="text-xs text-gray-500">[7]</span></div>
+                                <div class="font-medium text-sm text-white">Poison Tower <span
+                                        class="text-xs text-gray-500">[7]</span></div>
                                 <div class="text-xs text-gray-400">110💰</div>
                             </div>
                         </div>
-                        <button onclick="event.stopPropagation(); showTowerUpgrade('poison')" class="w-6 h-6 bg-primary/40 hover:bg-primary/60 rounded-full text-xs text-white flex items-center justify-center transition-colors">
+                        <button onclick="event.stopPropagation(); showTowerUpgrade('poison')"
+                            class="w-6 h-6 bg-primary/40 hover:bg-primary/60 rounded-full text-xs text-white flex items-center justify-center transition-colors">
                             ℹ️
                         </button>
                     </div>
@@ -585,21 +649,25 @@
 
         <!-- Game Canvas -->
         <div class="pt-20 pl-64 flex justify-center items-center min-h-screen">
-            <canvas id="gameCanvas" width="1000" height="480" class="border border-gray-700 rounded-lg bg-gray-900 glow"></canvas>
+            <canvas id="gameCanvas" width="1000" height="480"
+                class="border border-gray-700 rounded-lg bg-gray-900 glow"></canvas>
         </div>
 
         <!-- Game Over Screen -->
-        <div id="gameOverScreen" class="hidden fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50">
+        <div id="gameOverScreen"
+            class="hidden fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50">
             <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 max-w-md mx-4 text-center">
                 <div class="text-6xl mb-4">💀</div>
                 <h2 class="text-3xl font-bold mb-4 text-red-400">Game Over!</h2>
                 <p class="text-gray-300 mb-2">Final Points:</p>
                 <p id="finalScore" class="text-4xl font-bold text-primary mb-6">0</p>
                 <div class="space-y-3">
-                    <button onclick="restartGame()" class="w-full bg-primary hover:bg-orange-600 px-6 py-3 rounded-lg font-semibold transition-all">
+                    <button onclick="restartGame()"
+                        class="w-full bg-primary hover:bg-orange-600 px-6 py-3 rounded-lg font-semibold transition-all">
                         🔄 Play new game
                     </button>
-                    <button onclick="goHome()" class="w-full bg-gray-700 hover:bg-gray-600 px-6 py-3 rounded-lg font-semibold transition-all">
+                    <button onclick="goHome()"
+                        class="w-full bg-gray-700 hover:bg-gray-600 px-6 py-3 rounded-lg font-semibold transition-all">
                         🏠 Go to home page
                     </button>
                 </div>
@@ -607,7 +675,8 @@
         </div>
 
         <!-- Tower Upgrade Popup -->
-        <div id="towerUpgradePopup" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+        <div id="towerUpgradePopup"
+            class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
             <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 max-w-lg mx-4">
                 <div class="flex items-center justify-between mb-4">
                     <h3 id="towerUpgradeTitle" class="text-xl font-bold text-primary">Tower</h3>
@@ -621,7 +690,8 @@
                         <label class="text-sm text-gray-400">Damage <span id="damageLevel">Level 1</span></label>
                         <div class="flex items-center gap-2">
                             <span id="damageValue" class="text-primary font-bold">10</span>
-                            <button id="damageBuy" onclick="upgradeTowerStat('damage')" class="bg-primary hover:bg-orange-600 px-2 py-1 rounded text-xs">
+                            <button id="damageBuy" onclick="upgradeTowerStat('damage')"
+                                class="bg-primary hover:bg-orange-600 px-2 py-1 rounded text-xs">
                                 +1 (50💰)
                             </button>
                         </div>
@@ -630,16 +700,19 @@
                         <label class="text-sm text-gray-400">Range <span id="rangeLevel">Level 1</span></label>
                         <div class="flex items-center gap-2">
                             <span id="rangeValue" class="text-primary font-bold">100</span>
-                            <button id="rangeBuy" onclick="upgradeTowerStat('range')" class="bg-primary hover:bg-orange-600 px-2 py-1 rounded text-xs">
+                            <button id="rangeBuy" onclick="upgradeTowerStat('range')"
+                                class="bg-primary hover:bg-orange-600 px-2 py-1 rounded text-xs">
                                 +20 (40💰)
                             </button>
                         </div>
                     </div>
                     <div class="space-y-2">
-                        <label class="text-sm text-gray-400">Shooting Rate <span id="fireRateLevel">Level 1</span></label>
+                        <label class="text-sm text-gray-400">Shooting Rate <span id="fireRateLevel">Level
+                                1</span></label>
                         <div class="flex items-center gap-2">
                             <span id="fireRateValue" class="text-primary font-bold">60</span>
-                            <button id="fireRateBuy" onclick="upgradeTowerStat('fireRate')" class="bg-primary hover:bg-orange-600 px-2 py-1 rounded text-xs">
+                            <button id="fireRateBuy" onclick="upgradeTowerStat('fireRate')"
+                                class="bg-primary hover:bg-orange-600 px-2 py-1 rounded text-xs">
                                 +10 (60💰)
                             </button>
                         </div>
@@ -648,7 +721,8 @@
                         <label class="text-sm text-gray-400">Special <span id="specialLevel">Level 1</span></label>
                         <div class="flex items-center gap-2">
                             <span id="specialValue" class="text-primary font-bold">1</span>
-                            <button id="specialBuy" onclick="upgradeTowerStat('special')" class="bg-purple-600 hover:bg-purple-500 px-2 py-1 rounded text-xs">
+                            <button id="specialBuy" onclick="upgradeTowerStat('special')"
+                                class="bg-purple-600 hover:bg-purple-500 px-2 py-1 rounded text-xs">
                                 +1 (80💰)
                             </button>
                         </div>
@@ -658,7 +732,8 @@
         </div>
 
         <!-- Tower Configuration Popup -->
-        <div id="towerConfigPopup" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+        <div id="towerConfigPopup"
+            class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
             <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 max-w-md mx-4">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-2xl font-bold text-primary">Configure Tower</h3>
@@ -667,17 +742,20 @@
                 <div class="space-y-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-300 mb-2">Target Priority:</label>
-                        <select id="targetPriority" class="w-full bg-gray-800 border border-gray-600 rounded-lg p-2 text-white">
+                        <select id="targetPriority"
+                            class="w-full bg-gray-800 border border-gray-600 rounded-lg p-2 text-white">
                             <option value="closest">Closer</option>
                             <option value="strongest">Strongest</option>
                             <option value="weakest">Weakest</option>
                         </select>
                     </div>
                     <div class="flex gap-3">
-                        <button onclick="saveTowerConfig()" class="flex-1 bg-primary hover:bg-orange-600 px-4 py-2 rounded-lg font-semibold transition-all">
+                        <button onclick="saveTowerConfig()"
+                            class="flex-1 bg-primary hover:bg-orange-600 px-4 py-2 rounded-lg font-semibold transition-all">
                             Save
                         </button>
-                        <button onclick="closeTowerConfig()" class="flex-1 bg-gray-600 hover:bg-gray-500 px-4 py-2 rounded-lg font-semibold transition-all">
+                        <button onclick="closeTowerConfig()"
+                            class="flex-1 bg-gray-600 hover:bg-gray-500 px-4 py-2 rounded-lg font-semibold transition-all">
                             Cancel
                         </button>
                     </div>
@@ -687,4 +765,5 @@
     </div>
     <script src="./index.js"></script>
 </body>
+
 </html>
