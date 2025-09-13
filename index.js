@@ -691,25 +691,34 @@
                     gameState.showCountdown = true;
                     gameState.countdownTimer = 5;
                     document.getElementById('countdownContainer').classList.remove('hidden');
+                    // Initialize progress bar to full
+                    document.getElementById('progressBar').style.width = '100%';
                 }
             } else {
                 // Countdown between waves
                 gameState.waveTimer -= gameSpeed;
-             console.log(gameState.waveTimer)
-                if (gameState.waveTimer <= 0) {
+                
+                // Update progress bar smoothly based on total remaining time
+                const totalTimeLeft = Math.max(0, gameState.countdownTimer * 60 + gameState.waveTimer);
+                const totalTime = 5 * 60; // 5 seconds * 60 frames
+                const progress = Math.max(0, (totalTimeLeft / totalTime) * 100);
+                document.getElementById('progressBar').style.width = progress + '%';
+                
+                if (gameState.waveTimer <= 0 && gameState.countdownTimer > 0) {
                     gameState.countdownTimer--;
-                    document.getElementById('countdown').textContent = gameState.countdownTimer;
+                    document.getElementById('countdown').textContent = Math.max(0, gameState.countdownTimer);
                     gameState.waveTimer = 60; // Reset timer for next second
-                    
-                    if (gameState.countdownTimer <= 0) {
-                        // Start next wave
-                        gameState.wave++;
-                        gameState.enemiesInWave = Math.floor(5 + gameState.wave * 1.5);
-                        gameState.enemiesSpawned = 0;
-                        gameState.showCountdown = false;
-                        document.getElementById('countdownContainer').classList.add('hidden');
-                        updateUI();
-                    }
+                }
+                
+                // Only hide when progress bar actually reaches 0%
+                if (totalTimeLeft <= 0) {
+                    // Start next wave
+                    gameState.wave++;
+                    gameState.enemiesInWave = Math.floor(5 + gameState.wave * 1.5);
+                    gameState.enemiesSpawned = 0;
+                    gameState.showCountdown = false;
+                    document.getElementById('countdownContainer').classList.add('hidden');
+                    updateUI();
                 }
             }
         }

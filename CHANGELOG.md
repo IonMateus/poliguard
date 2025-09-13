@@ -10,6 +10,10 @@
 > - `MAJOR`: breaking changes or big updates.  
 > - `MINOR`: new features that are backward compatible.  
 > - `PATCH`: small fixes or minor improvements. 
+
+## [1.1.3] - 2025-09-12
+- Replaced countdown text with smooth progress bar for better visual indication of next wave timing
+
 ## [1.1.2] -2025-9-12
 - Fixed counter
 
