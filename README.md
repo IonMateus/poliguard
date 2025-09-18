@@ -1,8 +1,3 @@
-> ⚠️ **Note (until September 19):**  
-> I’ll have reduced activity while preparing for an important event.  
-> Don’t worry — feel free to open issues or submit PRs, and I’ll check everything once I’m back. Thanks for keeping the project moving! 🚀
-
----
 
 # PoliGuard 🏰🟧
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)
