@@ -3,98 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tower Defense - Defend Your Base</title>
+    <title>PoliGuard - Defenda sua Base</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <script src="./tailwind_config.js"></script>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body class="bg-black text-white">
    <!-- Home Page -->
-    <div id="homePage" class="min-h-screen">
+    <div id="homePage" class="min-h-screen flex flex-col">
         <!-- Header -->
-        <header class="bg-black/90 backdrop-blur-sm border-b border-gray-800 sticky top-0 z-50">
-            <div class="container mx-auto px-6 py-4">
-                <nav class="flex items-center justify-between">
-                    <div class="text-2xl font-bold text-primary">
-                        🏰 Tower Defense
-                    </div>
-                    <div class="hidden md:flex space-x-8">
-                        <a href="#sobre" class="hover:text-primary transition-colors rounded-lg">About</a>
-                        <a href="#funcionalidades" class="hover:text-primary transition-colors rounded-lg">Features</a>
-                        <a href="#depoimentos" class="hover:text-primary transition-colors rounded-lg">Testimonials</a>
-                    </div>
-                    <button onclick="startGame()" class="bg-primary hover:bg-orange-600 px-6 py-2 rounded-lg font-semibold transition-all transform hover:scale-105 glow">
-                        Play Now
-                    </button>
+        <header class="bg-black/80 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50 shadow-lg">
+            <div class="container mx-auto px-6 py-4 flex items-center justify-between relative">
+                <a href="#" class="text-3xl font-orbitron font-extrabold text-primary flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    PoliGuard
+                </a>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#sobre" class="nav-link text-lg hover:text-primary transition-colors">About</a>
+                    <a href="#funcionalidades" class="nav-link text-lg hover:text-primary transition-colors">Features</a>
+                    <a href="#depoimentos" class="nav-link text-lg hover:text-primary transition-colors">Testimonials</a>
+                    <a href="#contato" class="nav-link text-lg hover:text-primary transition-colors">Contact</a>
                 </nav>
+                <button onclick="window.location.href = './game/pages/game.html'" class="bg-primary hover:bg-orange-600 px-7 py-3 rounded-full font-semibold transition-all transform hover:scale-105 pulse-orange cta-button hidden md:block">
+                    Play Now <i class="fa-solid fa-play ml-2"></i>
+                </button>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobileMenuButton" class="text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="mobile-menu md:hidden">
+                <a href="#sobre" class="text-white hover:text-primary transition-colors px-6 py-3 block text-lg" onclick="toggleMobileMenu()">About</a>
+                <a href="#funcionalidades" class="text-white hover:text-primary transition-colors px-6 py-3 block text-lg" onclick="toggleMobileMenu()">Features</a>
+                <a href="#depoimentos" class="text-white hover:text-primary transition-colors px-6 py-3 block text-lg" onclick="toggleMobileMenu()">Testimonials</a>
+                <a href="#contato" class="text-white hover:text-primary transition-colors px-6 py-3 block text-lg" onclick="toggleMobileMenu()">Contact</a>
+                <button onclick="window.location.href = './game/pages/game.html'; toggleMobileMenu();" class="bg-primary hover:bg-orange-600 px-6 py-3 mx-6 mt-4 rounded-full font-semibold transition-all transform hover:scale-105 pulse-orange cta-button text-lg">
+                    Play Now <i class="fa-solid fa-play ml-2"></i>
+                </button>
             </div>
         </header>
 
         <!-- Hero Section -->
-        <section class="mesh-bg min-h-screen flex items-center relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent"></div>
-            
-            <!-- Floating Elements -->
-            <div class="floating-elements">
-                <div class="floating-element text-primary text-4xl" style="left: 10%; animation-delay: 0s;">🏰</div>
-                <div class="floating-element text-orange-400 text-3xl" style="left: 20%; animation-delay: 2s;">⚔️</div>
-                <div class="floating-element text-red-400 text-2xl" style="left: 30%; animation-delay: 4s;">💥</div>
-                <div class="floating-element text-blue-400 text-3xl" style="left: 40%; animation-delay: 6s;">🛡️</div>
-                <div class="floating-element text-purple-400 text-2xl" style="left: 50%; animation-delay: 8s;">⚡</div>
-                <div class="floating-element text-green-400 text-3xl" style="left: 60%; animation-delay: 10s;">🎯</div>
-                <div class="floating-element text-yellow-400 text-2xl" style="left: 70%; animation-delay: 12s;">💎</div>
-                <div class="floating-element text-pink-400 text-3xl" style="left: 80%; animation-delay: 14s;">🌟</div>
-                <div class="floating-element text-cyan-400 text-2xl" style="left: 90%; animation-delay: 16s;">❄️</div>
-            </div>
-            
-            <!-- Futuristic Floating Numbers -->
-            <div class="absolute inset-0 font-orbitron text-primary/10 text-6xl font-bold overflow-hidden">
-                <div class="absolute top-20 left-10 animate-pulse">01</div>
-                <div class="absolute top-40 right-20 animate-pulse" style="animation-delay: 0.5s;">10</div>
-                <div class="absolute bottom-40 left-20 animate-pulse" style="animation-delay: 1s;">11</div>
-                <div class="absolute bottom-20 right-40 animate-pulse" style="animation-delay: 1.5s;">00</div>
-                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse text-8xl" style="animation-delay: 2s;">101</div>
-                <div class="absolute top-32 left-1/3 animate-pulse" style="animation-delay: 2.5s;">001</div>
-                <div class="absolute bottom-32 right-1/3 animate-pulse" style="animation-delay: 3s;">110</div>
+    <section class="hero-section flex items-center relative py-20">
+            <div class="hero-bg-effect"></div>
+            <div class="hero-particles">
+                <div class="hero-particle"></div>
+                <div class="hero-particle"></div>
+                <div class="hero-particle"></div>
+                <div class="hero-particle"></div>
+                <div class="hero-particle"></div>
+                <div class="hero-particle"></div>
+                <div class="hero-particle"></div>
             </div>
             
             <div class="container mx-auto px-6 py-20 relative z-10">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div class="space-y-8">
-                        <h1 class="text-5xl lg:text-7xl font-orbitron font-black leading-tight">
-                            <span class="text-white">DEFEND</span><br>
-                            <span class="text-primary bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent">
-                               YOUR BASE
+                    <div class="space-y-8 text-center lg:text-left">
+                        <h1 class="text-5xl lg:text-7xl font-orbitron font-black leading-tight tracking-tight">
+                            <span class="text-white block mb-2">PROTEJA COM</span>
+                            <span class="text-gradient-orange block">
+                                POLIGUARD
                             </span>
                         </h1>
-                        <p class="text-xl text-gray-300 leading-relaxed font-inter">
-                            Tactical defense system. Build strategic towers, 
-                            eliminate hostile threats, and prove your superiority on the digital battlefield.
+                        <p class="text-xl text-gray-300 leading-relaxed font-inter max-w-2xl mx-auto lg:mx-0">
+                            Deploy cutting-edge towers, strategize your defenses, 
+                            and crush endless waves of enemies in this ultimate real-time tactical game.
                         </p>
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <button onclick="startGame()" class="bg-primary hover:bg-orange-600 px-8 py-4 rounded-xl font-orbitron font-bold text-lg transition-all transform hover:scale-105 glow">
-                                🎮 START MISSION
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <button onclick="window.location.href = './game/pages/game.html'" class="bg-primary hover:bg-orange-600 px-8 py-4 rounded-full font-orbitron font-bold text-lg transition-all transform hover:scale-105 pulse-orange cta-button">
+                                <i class="fa-solid fa-rocket mr-3"></i> START MISSION
                             </button>
-                            <button onclick="document.getElementById('sobre').scrollIntoView({behavior: 'smooth'})" class="border-2 border-primary text-primary hover:bg-primary hover:text-black px-8 py-4 rounded-xl font-orbitron font-bold text-lg transition-all">
-                                📖 BRIEFING
+                            <button onclick="document.getElementById('funcionalidades').scrollIntoView({behavior: 'smooth'})" class="border-2 border-primary text-primary hover:bg-primary hover:text-black px-8 py-4 rounded-full font-orbitron font-bold text-lg transition-all cta-button">
+                                <i class="fa-solid fa-info-circle mr-3"></i> LEARN MORE
                             </button>
                         </div>
                     </div>
-                    <div class="relative">
-                        <div class="relative rounded-2xl overflow-hidden border border-gray-700 glow">
-                            <img src="https://picsum.photos/600/400?random=1" alt="Tower Defense Preview" class="w-full h-auto">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4 right-4">
-                                <div class="bg-black/70 rounded-lg p-4 backdrop-blur-sm">
-                                    <div class="flex items-center justify-between text-sm font-orbitron">
-                                        <span class="flex items-center gap-2">
-                                            <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                                            ACTIVE SYSTEM
-                                        </span>
-                                        <span class="text-primary">⚡ REAL-TIME</span>
-                                    </div>
-                                </div>
+                    <div class="relative flex justify-center lg:justify-end mt-12 lg:mt-0">
+                        <div class="relative w-full max-w-lg rounded-2xl overflow-hidden border border-gray-700 glow-strong image-hover-effect">
+                            <img src="./images/img.png" alt="Tower Defense Preview" class="w-full h-auto object-cover">
+                            <div class="image-caption flex items-center justify-between text-sm font-orbitron">
+                                <span class="flex items-center gap-2">
+                                    <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
+                                    SYSTEM: ONLINE
+                                </span>
+                                <span class="text-primary flex items-center gap-2">
+                                    <i class="fa-solid fa-clock-rotate-left"></i> REAL-TIME COMBAT
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -103,96 +103,98 @@
         </section>
 
         <!-- Dynamic Statistics -->
-        <section class="py-16 bg-gradient-to-r from-gray-900 via-black to-gray-900 relative">
-            <div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent"></div>
+        <section class="py-16 bg-gradient-to-r from-dark-gray via-black to-dark-gray relative border-t border-b border-gray-800">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent z-0"></div>
             <div class="container mx-auto px-6 relative z-10">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div class="stats-card rounded-xl p-6 text-center">
-                        <div class="text-3xl mb-2">🏰</div>
-                        <div class="animated-counter text-2xl text-primary mb-2" data-target="7">0</div>
-                        <div class="text-gray-400 text-sm">Tower Types</div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="stats-card rounded-xl p-6 text-center shadow-lg">
+                        <div class="text-4xl mb-3 text-primary"><i class="fa-solid fa-chess-rook"></i></div>
+                        <div class="animated-counter text-3xl text-primary mb-2" data-target="7">0</div>
+                        <div class="text-gray-400 text-sm font-orbitron uppercase tracking-wide">Tower Types</div>
                     </div>
-                    <div class="stats-card rounded-xl p-6 text-center">
-                        <div class="text-3xl mb-2">⚔️</div>
-                        <div class="animated-counter text-2xl text-primary mb-2" data-target="99">0</div>
-                        <div class="text-gray-400 text-sm">Infinite Waves</div>
+                    <div class="stats-card rounded-xl p-6 text-center shadow-lg">
+                        <div class="text-4xl mb-3 text-primary"><i class="fa-solid fa-infinity"></i></div>
+                        <div class="animated-counter text-3xl text-primary mb-2" data-target="99">0</div>
+                        <div class="text-gray-400 text-sm font-orbitron uppercase tracking-wide">Endless Waves</div>
                     </div>
-                    <div class="stats-card rounded-xl p-6 text-center">
-                        <div class="text-3xl mb-2">🎯</div>
-                        <div class="animated-counter text-2xl text-primary mb-2" data-target="5">0</div>
-                        <div class="text-gray-400 text-sm">Unique Strategies</div>
+                    <div class="stats-card rounded-xl p-6 text-center shadow-lg">
+                        <div class="text-4xl mb-3 text-primary"><i class="fa-solid fa-brain"></i></div>
+                        <div class="animated-counter text-3xl text-primary mb-2" data-target="5">0</div>
+                        <div class="text-gray-400 text-sm font-orbitron uppercase tracking-wide">Unique Strategies</div>
                     </div>
-                    <div class="stats-card rounded-xl p-6 text-center">
-                        <div class="text-3xl mb-2">⭐</div>
-                        <div class="animated-counter text-2xl text-primary mb-2" data-target="100">0</div>
-                        <div class="text-gray-400 text-sm">Guaranteed Fun</div>
+                    <div class="stats-card rounded-xl p-6 text-center shadow-lg">
+                        <div class="text-4xl mb-3 text-primary"><i class="fa-solid fa-star-half-stroke"></i></div>
+                        <div class="animated-counter text-3xl text-primary mb-2" data-target="100">0</div>
+                        <div class="text-gray-400 text-sm font-orbitron uppercase tracking-wide">Guaranteed Fun</div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- About the Game -->
-        <section id="sobre" class="py-20 mesh-bg">
-            <div class="container mx-auto px-6">
+        <section id="sobre" class="py-20 bg-black relative overflow-hidden">
+            <div class="mesh-bg absolute inset-0 opacity-20"></div>
+            <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center mb-16">
                     <h2 class="text-4xl lg:text-5xl font-bold mb-6">
-                        What <span class="text-primary">this is</span>
+                        What <span class="text-primary">Awaits You</span>
                     </h2>
                     <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                        A real-time strategy game where your mission is to defend your base against endless waves of enemies
+                        A real-time strategy game where your mission is to defend your base against endless waves of enemies, testing your tactical prowess and swift decision-making.
                     </p>
                 </div>
                 
-                <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+                <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
                     <div class="space-y-6">
-                        <h3 class="text-3xl font-bold text-primary">🏗️ Strategic Construction</h3>
+                        <h3 class="text-3xl font-bold text-primary flex items-center gap-3">
+                            <i class="fa-solid fa-hammer text-4xl"></i> Strategic Construction
+                        </h3>
                         <p class="text-gray-300 text-lg leading-relaxed">
-                            Position your towers in strategic spots on the map. Every location could be a difference between life or death. Use the ground in your favor and create inpenetrable defenses.
+                            Meticulously position your towers on the dynamic battlefield. Every placement is crucial, defining the flow of the battle. Harness the terrain to forge an impenetrable defense line.
                         </p>
-                        <ul class="space-y-3 text-gray-300">
+                        <ul class="space-y-3 text-gray-300 ml-4 list-disc list-outside">
                             <li class="flex items-center gap-3">
-                                <span class="w-2 h-2 bg-primary rounded-full"></span>
-                                Intuative Placement
+                                <i class="fa-solid fa-check text-primary"></i> Intuitive Tower Placement
                             </li>
                             <li class="flex items-center gap-3">
-                                <span class="w-2 h-2 bg-primary rounded-full"></span>
-                                Preview of Placement in real time
+                                <i class="fa-solid fa-check text-primary"></i> Real-time Placement Previews
                             </li>
                             <li class="flex items-center gap-3">
-                                <span class="w-2 h-2 bg-primary rounded-full"></span>
-                                System of balanced costs
+                                <i class="fa-solid fa-check text-primary"></i> Balanced Economy System
                             </li>
                         </ul>
                     </div>
-                    <div class="relative">
-                        <img src="https://picsum.photos/500/300?random=2" alt="Construção de Torres" class="rounded-xl border border-gray-700">
-                        <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-xl"></div>
+                    <div class="relative image-hover-effect">
+                        <img src="./images/img.png" alt="Construção de Torres" class="rounded-xl border border-gray-700 shadow-xl">
+                        <div class="image-caption font-inter text-md">
+                            <p>Strategic placements are key to victory.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div class="relative order-2 lg:order-1">
-                        <img src="https://picsum.photos/500/300?random=3" alt="Ondas de Inimigos" class="rounded-xl border border-gray-700">
-                        <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-xl"></div>
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="relative order-2 lg:order-1 image-hover-effect">
+                        <img src="./images/img.png" alt="Ondas de Inimigos" class="rounded-xl border border-gray-700 shadow-xl">
+                        <div class="image-caption font-inter text-md">
+                            <p>Face relentless hordes with unique abilities.</p>
+                        </div>
                     </div>
                     <div class="space-y-6 order-1 lg:order-2">
-                        <h3 class="text-3xl font-bold text-primary">⚔️ Challenging Waves</h3>
+                        <h3 class="text-3xl font-bold text-primary flex items-center gap-3">
+                            <i class="fa-solid fa-meteor text-4xl"></i> Challenging Waves
+                        </h3>
                         <p class="text-gray-300 text-lg leading-relaxed">
-                            Battle enemies that become progressively more powerful and numerous. With every wave comes new challenges 
-                            that test your strategies and ability to adapt.
+                            Engage in combat against ever-evolving enemy waves, growing in power and numbers. Each wave introduces new challenges, demanding adaptability and strategic mastery.
                         </p>
-                        <ul class="space-y-3 text-gray-300">
+                        <ul class="space-y-3 text-gray-300 ml-4 list-disc list-outside">
                             <li class="flex items-center gap-3">
-                                <span class="w-2 h-2 bg-primary rounded-full"></span>
-                                Balanced difficulty progression
+                                <i class="fa-solid fa-check text-primary"></i> Progressive Difficulty Scaling
                             </li>
                             <li class="flex items-center gap-3">
-                                <span class="w-2 h-2 bg-primary rounded-full"></span>
-                                Enemies with unique behaviors
+                                <i class="fa-solid fa-check text-primary"></i> Diverse Enemy Behaviors
                             </li>
                             <li class="flex items-center gap-3">
-                                <span class="w-2 h-2 bg-primary rounded-full"></span>
-                                Increasing Challenges
+                                <i class="fa-solid fa-check text-primary"></i> Ever-Increasing Strategic Demands
                             </li>
                         </ul>
                     </div>
@@ -201,170 +203,175 @@
         </section>
 
         <!-- Features -->
-        <section id="funcionalidades" class="py-20 bg-black">
+        <section id="funcionalidades" class="py-20 bg-dark-gray border-t border-gray-800">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-4xl lg:text-5xl font-bold mb-6">
-                        <span class="text-primary">Epic</span> Features
+                        Unlock <span class="text-primary">Epic</span> Features
                     </h2>
                     <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                        Discover everything that makes this game a unique and addictive experience
+                        Dive into a unique and addictive tower defense experience, packed with innovative mechanics and endless replayability.
                     </p>
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="feature-card p-8 rounded-2xl tech-border">
+                    <div class="feature-card p-8 rounded-2xl border-glow">
                         <div class="flex items-center mb-6">
-                            <div class="text-4xl mr-4">🏰</div>
+                            <div class="text-4xl mr-4 text-primary"><i class="fa-solid fa-wrench"></i></div>
                             <div>
                                 <h3 class="text-xl font-bold text-primary">Upgradable Towers</h3>
                                 <div class="text-xs text-gray-500 font-orbitron">SYSTEM.DEFENSE.V2</div>
                             </div>
                         </div>
                         <p class="text-gray-300 mb-4">
-                            Construct and evolve your defenses with different types of towers, each one with unique and devistating abilities.
+                            Construct and evolve your defenses with diverse tower types, each boasting unique and devastating abilities.
                         </p>
-                        <div class="text-xs text-primary">• 6 Unique Types • Multiple Upgrades • Infinite Strategies</div>
+                        <div class="text-xs text-primary font-orbitron opacity-80 mt-4">• 6 UNIQUE TYPES • MULTIPLE UPGRADES • INFINITE STRATEGIES</div>
                     </div>
 
-                    <div class="feature-card p-8 rounded-2xl tech-border">
+                    <div class="feature-card p-8 rounded-2xl border-glow">
                         <div class="flex items-center mb-6">
-                            <div class="text-4xl mr-4">🌊</div>
+                            <div class="text-4xl mr-4 text-primary"><i class="fa-solid fa-skull-crossbones"></i></div>
                             <div>
                                 <h3 class="text-xl font-bold text-primary">Infinite Waves</h3>
                                 <div class="text-xs text-gray-500 font-orbitron">ENEMY.SPAWN.CTRL</div>
                             </div>
                         </div>
                         <p class="text-gray-300 mb-4">
-                            Battle endless waves of enemies with increasing difficulty. How long will you survive?
+                            Engage in relentless battles against endless waves of enemies, each presenting increasing difficulty. How long can you survive?
                         </p>
-                        <div class="text-xs text-primary">• Progressive Difficulty • Intellegent Enemies • Infinite Challenge</div>
+                        <div class="text-xs text-primary font-orbitron opacity-80 mt-4">• PROGRESSIVE DIFFICULTY • INTELLIGENT ENEMIES • UNLIMITED CHALLENGE</div>
                     </div>
 
-                    <div class="feature-card p-8 rounded-2xl tech-border">
+                    <div class="feature-card p-8 rounded-2xl border-glow">
                         <div class="flex items-center mb-6">
-                            <div class="text-4xl mr-4">🏆</div>
+                            <div class="text-4xl mr-4 text-primary"><i class="fa-solid fa-trophy"></i></div>
                             <div>
-                                <h3 class="text-xl font-bold text-primary">Point System</h3>
+                                <h3 class="text-xl font-bold text-primary">Advanced Scoring</h3>
                                 <div class="text-xs text-gray-500 font-orbitron">SCORE.ENGINE.PRO</div>
                             </div>
                         </div>
                         <p class="text-gray-300 mb-4">
-                            Compete with yourself and beat your high score with a balanced scoring system.
+                            Compete for global dominance and break your own high scores with a dynamic and finely-tuned scoring system.
                         </p>
-                        <div class="text-xs text-primary">• Dynamic Ranking • Multipliers • Personal Records</div>
+                        <div class="text-xs text-primary font-orbitron opacity-80 mt-4">• DYNAMIC LEADERBOARDS • MULTIPLIER BONUSES • PERSONAL RECORDS</div>
                     </div>
 
-                    <div class="feature-card p-8 rounded-2xl tech-border">
+                    <div class="feature-card p-8 rounded-2xl border-glow">
                         <div class="flex items-center mb-6">
-                            <div class="text-4xl mr-4">💰</div>
+                            <div class="text-4xl mr-4 text-primary"><i class="fa-solid fa-coins"></i></div>
                             <div>
                                 <h3 class="text-xl font-bold text-primary">Strategic Economy</h3>
                                 <div class="text-xs text-gray-500 font-orbitron">RESOURCE.MANAGER</div>
                             </div>
                         </div>
                         <p class="text-gray-300 mb-4">
-                            Spend your resources wisely. Every spending decision could determine your fate.
+                            Master the art of resource management. Every economic decision is a crucial step towards victory or defeat.
                         </p>
-                        <div class="text-xs text-primary">• Dynamic Currency • Investments • Balanced Economy</div>
+                        <div class="text-xs text-primary font-orbitron opacity-80 mt-4">• DYNAMIC CURRENCY • CRITICAL INVESTMENTS • BALANCED ECOSYSTEM</div>
                     </div>
 
-                    <div class="feature-card p-8 rounded-2xl tech-border">
+                    <div class="feature-card p-8 rounded-2xl border-glow">
                         <div class="flex items-center mb-6">
-                            <div class="text-4xl mr-4">🎮</div>
+                            <div class="text-4xl mr-4 text-primary"><i class="fa-solid fa-gamepad"></i></div>
                             <div>
-                                <h3 class="text-xl font-bold text-primary">Intuative Interface</h3>
+                                <h3 class="text-xl font-bold text-primary">Intuitive Interface</h3>
                                 <div class="text-xs text-gray-500 font-orbitron">UI.EXPERIENCE.MAX</div>
                             </div>
                         </div>
                         <p class="text-gray-300 mb-4">
-                            Simple and responsive controls that allow you to focus on your strategy without unnecessary complications.
+                            Experience seamless gameplay with responsive controls and a clean interface, allowing you to focus purely on strategy.
                         </p>
-                        <div class="text-xs text-primary">• Responsive Design • Smooth Controlls • Optimized UX</div>
+                        <div class="text-xs text-primary font-orbitron opacity-80 mt-4">• RESPONSIVE DESIGN • SMOOTH CONTROLS • OPTIMIZED UX</div>
                     </div>
 
-                    <div class="feature-card p-8 rounded-2xl tech-border">
+                    <div class="feature-card p-8 rounded-2xl border-glow">
                         <div class="flex items-center mb-6">
-                            <div class="text-4xl mr-4">⚡</div>
+                            <div class="text-4xl mr-4 text-primary"><i class="fa-solid fa-bolt"></i></div>
                             <div>
-                                <h3 class="text-xl font-bold text-primary">Combat in Real Time</h3>
+                                <h3 class="text-xl font-bold text-primary">Real-Time Combat</h3>
                                 <div class="text-xs text-gray-500 font-orbitron">REAL.TIME.ENGINE</div>
                             </div>
                         </div>
                         <p class="text-gray-300 mb-4">
-                            Smooth and responsive playability with smooth animations that captures every exciting moment.
+                            Immerse yourself in fluid gameplay with smooth animations and dynamic effects, capturing every intense moment of battle.
                         </p>
-                        <div class="text-xs text-primary">• 60 FPS • Realistic Physics • Smooth Animations</div>
+                        <div class="text-xs text-primary font-orbitron opacity-80 mt-4">• 60 FPS OPTIMIZED • DYNAMIC PHYSICS • STUNNING ANIMATIONS</div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Testimonials -->
-        <section id="depoimentos" class="py-20 mesh-bg">
-            <div class="container mx-auto px-6">
+        <section id="depoimentos" class="py-20 bg-black relative overflow-hidden">
+            <div class="mesh-bg absolute inset-0 opacity-20"></div>
+            <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center mb-16">
                     <h2 class="text-4xl lg:text-5xl font-bold mb-6">
-                        What the <span class="text-primary">Players</span> Say
+                        What the <span class="text-primary">Commanders</span> Say
                     </h2>
                     <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                        Discover why many players are stuck in this incredible tower defense game
+                        Discover why players worldwide are captivated by this unparalleled tower defense experience.
                     </p>
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-black p-8 rounded-2xl border border-gray-800">
+                    <div class="bg-dark-gray p-8 rounded-2xl border border-gray-800 hover:border-primary/50 transition-all duration-300 shadow-xl">
                         <div class="flex items-center mb-4">
-                            <div class="flex text-primary text-xl">★★★★★</div>
+                            <div class="flex text-primary text-2xl">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
                         </div>
-                        <p class="text-gray-300 mb-6 text-lg">
-                            "Incredible! Hours of fun guaranteed. The mechanics are simple, making it perfect for relaxing after work."
+                        <p class="text-gray-300 mb-6 text-lg italic">
+                            "Absolutely incredible! Guarantees hours of captivating fun. The mechanics are elegantly simple, making it the perfect escape after a long day."
                         </p>
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center font-bold">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-primary/20 text-primary rounded-full flex items-center justify-center font-bold text-xl border border-primary/50">
                                 M
                             </div>
                             <div>
-                                <div class="font-semibold">Marina Silva</div>
-                                <div class="text-sm text-gray-400">Casual Player</div>
+                                <div class="font-semibold text-white text-lg">Marina Silva</div>
+                                <div class="text-sm text-gray-400 font-orbitron">Casual Strategist</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-black p-8 rounded-2xl border border-gray-800">
+                    <div class="bg-dark-gray p-8 rounded-2xl border border-gray-800 hover:border-primary/50 transition-all duration-300 shadow-xl">
                         <div class="flex items-center mb-4">
-                            <div class="flex text-primary text-xl">★★★★★</div>
+                            <div class="flex text-primary text-2xl">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
                         </div>
-                        <p class="text-gray-300 mb-6 text-lg">
-                            "One of the best games I have ever played! The progression is perfect 
-                            and always makes me want to play 'just one more round'."
+                        <p class="text-gray-300 mb-6 text-lg italic">
+                            "One of the most engaging games I've ever played! The progression is masterfully designed, always pushing me for 'just one more round'."
                         </p>
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center font-bold">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-primary/20 text-primary rounded-full flex items-center justify-center font-bold text-xl border border-primary/50">
                                 R
                             </div>
                             <div>
-                                <div class="font-semibold">Ricardo Santos</div>
-                                <div class="text-sm text-gray-400">Hardcore Gamer</div>
+                                <div class="font-semibold text-white text-lg">Ricardo Santos</div>
+                                <div class="text-sm text-gray-400 font-orbitron">Tactical Veteran</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-black p-8 rounded-2xl border border-gray-800">
+                    <div class="bg-dark-gray p-8 rounded-2xl border border-gray-800 hover:border-primary/50 transition-all duration-300 shadow-xl">
                         <div class="flex items-center mb-4">
-                            <div class="flex text-primary text-xl">★★★★★</div>
+                            <div class="flex text-primary text-2xl">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
                         </div>
-                        <p class="text-gray-300 mb-6 text-lg">
-                            "Beautiful interface and fluid playability. My children also love it! 
-                            This is the type of game that the whole family can enjoy together."
+                        <p class="text-gray-300 mb-6 text-lg italic">
+                            "Stunning visuals and incredibly fluid gameplay. Even my kids are hooked! This is truly a game the entire family can enjoy together."
                         </p>
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center font-bold">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-primary/20 text-primary rounded-full flex items-center justify-center font-bold text-xl border border-primary/50">
                                 A
                             </div>
                             <div>
-                                <div class="font-semibold">Ana Costa</div>
-                                <div class="text-sm text-gray-400">Mother and Gamer</div>
+                                <div class="font-semibold text-white text-lg">Ana Costa</div>
+                                <div class="text-sm text-gray-400 font-orbitron">Family Gamer</div>
                             </div>
                         </div>
                     </div>
@@ -372,319 +379,140 @@
             </div>
         </section>
 
+        <!-- Call to Action Section -->
+        <section class="bg-gradient-to-br from-black to-dark-gray py-20 text-center border-t border-b border-gray-800">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl lg:text-5xl font-orbitron font-bold mb-6">
+                    Ready to <span class="text-gradient-orange">Defend?</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-10">
+                    Join thousands of commanders and embark on your epic journey to fortify your base and conquer the endless waves.
+                </p>
+                <button onclick="window.location.href = './game/pages/game.html'" class="bg-primary hover:bg-orange-600 px-10 py-5 rounded-full font-orbitron font-bold text-xl transition-all transform hover:scale-105 pulse-orange cta-button">
+                    <i class="fa-solid fa-crosshairs mr-3"></i> DEPLOY NOW
+                </button>
+            </div>
+        </section>
+
         <!-- Footer -->
-        <footer class="bg-black border-t border-gray-800 py-12">
+        <footer id="contato" class="bg-black border-t border-gray-800 py-12 mt-auto">
             <div class="container mx-auto px-6">
                 <div class="grid md:grid-cols-4 gap-8">
                     <div class="space-y-4">
-                        <div class="text-2xl font-bold text-primary">🏰 Tower Defense</div>
+                        <div class="text-3xl font-orbitron font-extrabold text-primary flex items-center gap-2">
+                            <i class="fa-solid fa-fort-awesome"></i> Tower Defense
+                        </div>
                         <p class="text-gray-400">
-                            The best tower defense game you will find. Fun guaranteed for people of all ages.
+                            The ultimate tower defense experience. Strategic fun guaranteed for players of all ages.
                         </p>
                     </div>
                     
                     <div class="space-y-4">
-                        <h4 class="font-semibold text-lg">Contact</h4>
+                        <h4 class="font-semibold text-lg text-white">Contact Us</h4>
                         <div class="space-y-2 text-gray-400">
-                            <p>📧 -</p>
-                            <p>📱 -</p>
-                            <p>📍 -</p>
+                            <p class="flex items-center gap-2"><i class="fa-solid fa-envelope text-primary"></i> contact@towerdefense.com</p>
+                            <p class="flex items-center gap-2"><i class="fa-solid fa-phone text-primary"></i> +1 (123) 456-7890</p>
+                            <p class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-primary"></i> Digital Realm, Earth</p>
                         </div>
                     </div>
                     
                     <div class="space-y-4">
-                        <h4 class="font-semibold text-lg">Quick Links</h4>
+                        <h4 class="font-semibold text-lg text-white">Quick Links</h4>
                         <div class="space-y-2 text-gray-400">
                             <a href="#sobre" class="block hover:text-primary transition-colors">About the Game</a>
                             <a href="#funcionalidades" class="block hover:text-primary transition-colors">Features</a>
                             <a href="#depoimentos" class="block hover:text-primary transition-colors">Testimonials</a>
+                            <a href="#homePage" class="block hover:text-primary transition-colors">Back to Top</a>
                         </div>
                     </div>
                     
                     <div class="space-y-4">
-                        <h4 class="font-semibold text-lg">Social Media</h4>
+                        <h4 class="font-semibold text-lg text-white">Follow Us</h4>
                         <div class="flex space-x-4">
-                            <a href="#" class="text-gray-400 hover:text-primary transition-colors text-2xl">📘</a>
-                            <a href="#" class="text-gray-400 hover:text-primary transition-colors text-2xl">📸</a>
-                            <a href="#" class="text-gray-400 hover:text-primary transition-colors text-2xl">🐦</a>
-                            <a href="#" class="text-gray-400 hover:text-primary transition-colors text-2xl">🎮</a>
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors text-2xl" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors text-2xl" aria-label="Instagram"><i class="fab fa-instagram-square"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors text-2xl" aria-label="Twitter"><i class="fab fa-twitter-square"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors text-2xl" aria-label="Discord"><i class="fab fa-discord"></i></a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                    <p>&copy; 2024 Tower Defense. All rights reserved. Made with ❤️ for gamers.</p>
+                <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                    <p>&copy; 2024 Tower Defense. All rights reserved. Crafted with <i class="fa-solid fa-heart text-red-500 mx-1"></i> for gamers.</p>
                 </div>
             </div>
         </footer>
     </div>
 
-    <!-- Game -->
-    <div id="gameContainer" class="hidden min-h-screen bg-black relative">
-        <!-- Game Interface -->
-        <div class="game-ui fixed top-0 left-0 right-0 z-50 border-b border-gray-700">
-            <div class="container mx-auto px-4 py-3">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-6">
-                        <button onclick="goHome()" class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors glow">
-                            ← Return
-                        </button>
-                        <div class="flex items-center space-x-4 text-sm">
-                            <div class="flex items-center gap-2">
-                                <span class="text-yellow-400">💰</span>
-                                <span id="money" class="font-semibold glow">100</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-red-400">❤️</span>
-                                <span id="lives" class="font-semibold glow">10</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-primary">🏆</span>
-                                <span id="score" class="font-semibold glow">0</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-purple-400">🌊</span>
-                                <span>Wave: <span id="wave" class="font-semibold glow">1</span></span>
-                            </div>
-                            <div id="countdownContainer" class="hidden flex items-center gap-2">
-                                <span class="text-primary">⏱️</span>
-                                <span>Next wave: <span id="countdown" class="font-bold text-primary">5</span></span>
-                                <div class="w-16 h-2 bg-gray-700 rounded-full overflow-hidden">
-                                    <div id="progressBar" class="h-full bg-primary rounded-full" style="width: 100%;"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <button id="sellModeBtn" onclick="toggleSellMode()" class="bg-gray-700/50 hover:bg-red-600/80 border border-gray-600/50 px-3 py-2 rounded-lg transition-all opacity-70 hover:opacity-100 text-xs font-semibold">
-                            🗑️ Remove
-                        </button>
-                        <button id="pauseBtn" onclick="togglePause()" class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors glow text-sm font-semibold">
-                            ⏸️ Pause
-                        </button>
-                        <div id="speedControls" class="hidden flex items-center gap-2">
-                            <button id="slowBtn" onclick="changeGameSpeed(0.5)" class="bg-blue-700 hover:bg-blue-600 px-3 py-2 rounded text-xs">0.5x</button>
-                            <button id="normalBtn" onclick="changeGameSpeed(1)" class="bg-gray-700 hover:bg-gray-600 px-3 py-2 rounded text-xs">1x</button>
-                            <button id="fastBtn" onclick="changeGameSpeed(2)" class="bg-orange-700 hover:bg-orange-600 px-3 py-2 rounded text-xs">2x</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
 
-        <!-- Left Lateral Towers -->
-        <div class="game-ui fixed top-20 left-0 w-64 h-full z-40 p-4">
-            <h3 class="text-lg font-bold text-primary mb-4">⚔️ Available Towers</h3>
-            <div class="space-y-3 overflow-y-auto max-h-[calc(100vh-8rem)] pr-2">
-                <div id="basicTowerBtn" onclick="selectTower('basic')" class="w-full bg-gray-800/80 hover:bg-gray-700 border border-gray-600 p-3 rounded-lg transition-all cursor-pointer">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <div class="text-lg">⭐</div>
-                            <div>
-                                <div class="font-medium text-sm text-white">Basic Tower <span class="text-xs text-gray-500">[1]</span></div>
-                                <div class="text-xs text-gray-400">50💰</div>
-                            </div>
-                        </div>
-                        <button onclick="event.stopPropagation(); showTowerUpgrade('basic')" class="w-6 h-6 bg-primary/40 hover:bg-primary/60 rounded-full text-xs text-white flex items-center justify-center transition-colors">
-                            ℹ️
-                        </button>
-                    </div>
-                </div>
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-                <div id="fastTowerBtn" onclick="selectTower('fast')" class="w-full bg-gray-800/80 hover:bg-gray-700 border border-gray-600 p-3 rounded-lg transition-all cursor-pointer">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <div class="text-lg">⬜</div>
-                            <div>
-                                <div class="font-medium text-sm text-white">Fast Tower <span class="text-xs text-gray-500">[2]</span></div>
-                                <div class="text-xs text-gray-400">75💰</div>
-                            </div>
-                        </div>
-                        <button onclick="event.stopPropagation(); showTowerUpgrade('fast')" class="w-6 h-6 bg-primary/40 hover:bg-primary/60 rounded-full text-xs text-white flex items-center justify-center transition-colors">
-                            ℹ️
-                        </button>
-                    </div>
-                </div>
+        // Animated Counters
+        const counters = document.querySelectorAll('.animated-counter');
+        const speed = 200; // The lower the speed, the faster the counter
 
-                <div id="strongTowerBtn" onclick="selectTower('strong')" class="w-full bg-gray-800/80 hover:bg-gray-700 border border-gray-600 p-3 rounded-lg transition-all cursor-pointer">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <div class="text-lg">⬟</div>
-                            <div>
-                                <div class="font-medium text-sm text-white">Strong Tower <span class="text-xs text-gray-500">[3]</span></div>
-                                <div class="text-xs text-gray-400">100💰</div>
-                            </div>
-                        </div>
-                        <button onclick="event.stopPropagation(); showTowerUpgrade('strong')" class="w-6 h-6 bg-primary/40 hover:bg-primary/60 rounded-full text-xs text-white flex items-center justify-center transition-colors">
-                            ℹ️
-                        </button>
-                    </div>
-                </div>
+        const animateCounter = (counter) => {
+            const target = +counter.getAttribute('data-target');
+            let count = 0;
+            const updateCount = () => {
+                const increment = target / speed;
+                if (count < target) {
+                    count = Math.ceil(count + increment);
+                    counter.innerText = count;
+                    setTimeout(updateCount, 10);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            updateCount();
+        };
 
-                <div id="sniperTowerBtn" onclick="selectTower('sniper')" class="w-full bg-gray-800/80 hover:bg-gray-700 border border-gray-600 p-3 rounded-lg transition-all cursor-pointer">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <div class="text-lg">💎</div>
-                            <div>
-                                <div class="font-medium text-sm text-white">Sniper Tower <span class="text-xs text-gray-500">[4]</span></div>
-                                <div class="text-xs text-gray-400">150💰</div>
-                            </div>
-                        </div>
-                        <button onclick="event.stopPropagation(); showTowerUpgrade('sniper')" class="w-6 h-6 bg-primary/40 hover:bg-primary/60 rounded-full text-xs text-white flex items-center justify-center transition-colors">
-                            ℹ️
-                        </button>
-                    </div>
-                </div>
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, { threshold: 0.5 }); // Trigger when 50% of element is visible
 
-                <div id="splashTowerBtn" onclick="selectTower('splash')" class="w-full bg-gray-800/80 hover:bg-gray-700 border border-gray-600 p-3 rounded-lg transition-all cursor-pointer">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <div class="text-lg">💥</div>
-                            <div>
-                                <div class="font-medium text-sm text-white">Explosive Tower <span class="text-xs text-gray-500">[5]</span></div>
-                                <div class="text-xs text-gray-400">120💰</div>
-                            </div>
-                        </div>
-                        <button onclick="event.stopPropagation(); showTowerUpgrade('splash')" class="w-6 h-6 bg-primary/40 hover:bg-primary/60 rounded-full text-xs text-white flex items-center justify-center transition-colors">
-                            ℹ️
-                        </button>
-                    </div>
-                </div>
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
 
-                <div id="slowTowerBtn" onclick="selectTower('slow')" class="w-full bg-gray-800/80 hover:bg-gray-700 border border-gray-600 p-3 rounded-lg transition-all cursor-pointer">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <div class="text-lg">❄️</div>
-                            <div>
-                                <div class="font-medium text-sm text-white">Ice Tower <span class="text-xs text-gray-500">[6]</span></div>
-                                <div class="text-xs text-gray-400">90💰</div>
-                            </div>
-                        </div>
-                        <button onclick="event.stopPropagation(); showTowerUpgrade('slow')" class="w-6 h-6 bg-primary/40 hover:bg-primary/60 rounded-full text-xs text-white flex items-center justify-center transition-colors">
-                            ℹ️
-                        </button>
-                    </div>
-                </div>
+        // Placeholder for game start function
+        function startGame() {
+            alert("Starting your mission! Prepare for battle!");
+            // In a real application, you would redirect to the game page or load game assets.
+        }
 
-                <div id="poisonTowerBtn" onclick="selectTower('poison')" class="w-full bg-gray-800/80 hover:bg-gray-700 border border-gray-600 p-3 rounded-lg transition-all cursor-pointer">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <div class="text-lg">☢️</div>
-                            <div>
-                                <div class="font-medium text-sm text-white">Poison Tower <span class="text-xs text-gray-500">[7]</span></div>
-                                <div class="text-xs text-gray-400">110💰</div>
-                            </div>
-                        </div>
-                        <button onclick="event.stopPropagation(); showTowerUpgrade('poison')" class="w-6 h-6 bg-primary/40 hover:bg-primary/60 rounded-full text-xs text-white flex items-center justify-center transition-colors">
-                            ℹ️
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
 
-        <!-- Game Canvas -->
-        <div class="pt-20 pl-64 flex justify-center items-center min-h-screen">
-            <canvas id="gameCanvas" width="1000" height="480" class="border border-gray-700 rounded-lg bg-gray-900 glow"></canvas>
-        </div>
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('open');
+            // Toggle icon
+            const icon = mobileMenuButton.querySelector('i');
+            if (mobileMenu.classList.contains('open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+        mobileMenuButton.addEventListener('click', toggleMobileMenu);
 
-        <!-- Game Over Screen -->
-        <div id="gameOverScreen" class="hidden fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50">
-            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 max-w-md mx-4 text-center">
-                <div class="text-6xl mb-4">💀</div>
-                <h2 class="text-3xl font-bold mb-4 text-red-400">Game Over!</h2>
-                <p class="text-gray-300 mb-2">Final Points:</p>
-                <p id="finalScore" class="text-4xl font-bold text-primary mb-6">0</p>
-                <div class="space-y-3">
-                    <button onclick="restartGame()" class="w-full bg-primary hover:bg-orange-600 px-6 py-3 rounded-lg font-semibold transition-all">
-                        🔄 Play new game
-                    </button>
-                    <button onclick="goHome()" class="w-full bg-gray-700 hover:bg-gray-600 px-6 py-3 rounded-lg font-semibold transition-all">
-                        🏠 Go to home page
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tower Upgrade Popup -->
-        <div id="towerUpgradePopup" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
-            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 max-w-lg mx-4">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 id="towerUpgradeTitle" class="text-xl font-bold text-primary">Tower</h3>
-                    <button onclick="closeTowerUpgrade()" class="text-gray-400 hover:text-white text-2xl">×</button>
-                </div>
-                <div id="towerUpgradeContent" class="text-gray-300 space-y-2 mb-4">
-                    <!-- Dynamic Content -->
-                </div>
-                <div class="grid grid-cols-2 gap-3">
-                    <div class="space-y-2">
-                        <label class="text-sm text-gray-400">Damage <span id="damageLevel">Level 1</span></label>
-                        <div class="flex items-center gap-2">
-                            <span id="damageValue" class="text-primary font-bold">10</span>
-                            <button id="damageBuy" onclick="upgradeTowerStat('damage')" class="bg-primary hover:bg-orange-600 px-2 py-1 rounded text-xs">
-                                +1 (50💰)
-                            </button>
-                        </div>
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-sm text-gray-400">Range <span id="rangeLevel">Level 1</span></label>
-                        <div class="flex items-center gap-2">
-                            <span id="rangeValue" class="text-primary font-bold">100</span>
-                            <button id="rangeBuy" onclick="upgradeTowerStat('range')" class="bg-primary hover:bg-orange-600 px-2 py-1 rounded text-xs">
-                                +20 (40💰)
-                            </button>
-                        </div>
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-sm text-gray-400">Shooting Rate <span id="fireRateLevel">Level 1</span></label>
-                        <div class="flex items-center gap-2">
-                            <span id="fireRateValue" class="text-primary font-bold">60</span>
-                            <button id="fireRateBuy" onclick="upgradeTowerStat('fireRate')" class="bg-primary hover:bg-orange-600 px-2 py-1 rounded text-xs">
-                                +10 (60💰)
-                            </button>
-                        </div>
-                    </div>
-                    <div id="specialUpgrade" class="space-y-2">
-                        <label class="text-sm text-gray-400">Special <span id="specialLevel">Level 1</span></label>
-                        <div class="flex items-center gap-2">
-                            <span id="specialValue" class="text-primary font-bold">1</span>
-                            <button id="specialBuy" onclick="upgradeTowerStat('special')" class="bg-purple-600 hover:bg-purple-500 px-2 py-1 rounded text-xs">
-                                +1 (80💰)
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tower Configuration Popup -->
-        <div id="towerConfigPopup" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
-            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 max-w-md mx-4">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-2xl font-bold text-primary">Configure Tower</h3>
-                    <button onclick="closeTowerConfig()" class="text-gray-400 hover:text-white text-2xl">×</button>
-                </div>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-2">Target Priority:</label>
-                        <select id="targetPriority" class="w-full bg-gray-800 border border-gray-600 rounded-lg p-2 text-white">
-                            <option value="closest">Closer</option>
-                            <option value="strongest">Strongest</option>
-                            <option value="weakest">Weakest</option>
-                        </select>
-                    </div>
-                    <div class="flex gap-3">
-                        <button onclick="saveTowerConfig()" class="flex-1 bg-primary hover:bg-orange-600 px-4 py-2 rounded-lg font-semibold transition-all">
-                            Save
-                        </button>
-                        <button onclick="closeTowerConfig()" class="flex-1 bg-gray-600 hover:bg-gray-500 px-4 py-2 rounded-lg font-semibold transition-all">
-                            Cancel
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="./index.js"></script>
+    </script>
 </body>
 </html>

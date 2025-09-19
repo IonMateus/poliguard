@@ -86,9 +86,6 @@
 
         // Initialize Game
         function startGame() {
-            document.getElementById('homePage').classList.add('hidden');
-            document.getElementById('gameContainer').classList.remove('hidden');
-            
             canvas = document.getElementById('gameCanvas');
             ctx = canvas.getContext('2d');
             
@@ -96,13 +93,6 @@
             resetGame();
             gameRunning = true;
             gameLoop();
-        }
-
-        function goHome() {
-            gameRunning = false;
-            document.getElementById('homePage').classList.remove('hidden');
-            document.getElementById('gameContainer').classList.add('hidden');
-            document.getElementById('gameOverScreen').classList.add('hidden');
         }
 
         function resetGame() {
@@ -1398,9 +1388,7 @@
 
         // Initialize observer when the page loads
         document.addEventListener('DOMContentLoaded', () => {
-            const statsSection = document.querySelector('.stats-card').closest('section');
-            if (statsSection) {
-                observer.observe(statsSection);
-            }
+
+            startGame()
         });
 

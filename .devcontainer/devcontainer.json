@@ -1,7 +1,0 @@
-{
-  "name": "PoliGuard Dev Container",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-  "extensions": [
-    "ritwickdey.LiveServer"
-  ]
-}
