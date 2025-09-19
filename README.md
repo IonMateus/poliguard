@@ -32,11 +32,8 @@ The development of PoliGuard is **open to contributions**. Developers of all lev
 ![Gameplay Screenshot](assets/screenshot.png)
 ![Home Page](assets/homepage.png)
 
----
-## 📥 How to Run
-1. Fork and clone the repository:
-git clone https://github.com/demagalawrence/poliguard.git
-cd poliguard
+
+
 
 
 **Key gameplay mechanics:**  
