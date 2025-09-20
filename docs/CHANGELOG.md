@@ -11,6 +11,9 @@
 > - `MINOR`: new features that are backward compatible.  
 > - `PATCH`: small fixes or minor improvements. 
 
+## [1.2.3] - 2025-9-19
+- Added lightning tower
+
 ## [1.1.3] - 2025-09-12
 - Replaced countdown text with smooth progress bar for better visual indication of next wave timing
 

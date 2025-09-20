@@ -170,6 +170,22 @@
                         </button>
                     </div>
                 </div>
+
+                <div id="lightningTowerBtn" onclick="selectTower('lightning')" class="w-full bg-gray-800/80 hover:bg-gray-700 border border-gray-600 p-3 rounded-lg transition-all cursor-pointer">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="text-lg">🗲</div>
+                            <div>
+                                <div class="font-medium text-sm text-white">Lightning Tower <span class="text-xs text-gray-500">[8]</span></div>
+                                <div class="text-xs text-gray-400">200💰</div>
+                            </div>
+                        </div>
+                        <button onclick="event.stopPropagation(); showTowerUpgrade('lightning')" class="w-6 h-6 bg-primary/40 hover:bg-primary/60 rounded-full text-xs text-white flex items-center justify-center transition-colors">
+                            ℹ️
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -275,7 +291,6 @@
             </div>
         </div>
     </div>
-    
     <script src="../scripts/index.js"></script>
 </body>
 </html>

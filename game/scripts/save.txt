@@ -63,6 +63,10 @@
                 cost: 110, damage: 5, range: 80, fireRate: 70, color: '#22c55e', shape: 'circle',
                 name: 'Poison Tower', description: 'Poison enemies causing continuous damage.',
                 poisonDamage: 3, poisonDuration: 4000
+            },
+            lightning: {
+                cost: 200, damage: 25, range: 150, fireRate: 150, color: '#aaddee', shape: 'pentagon',
+                name: 'Lightning Tower', description: 'Shoots lightning at enemies, attacking multipe enemies from long distances.'
             }
         };
         
@@ -74,7 +78,8 @@
             sniper: { damage: 0, range: 0, fireRate: 0, special: 0 },
             splash: { damage: 0, range: 0, fireRate: 0, special: 0 },
             slow: { damage: 0, range: 0, fireRate: 0, special: 0 },
-            poison: { damage: 0, range: 0, fireRate: 0, special: 0 }
+            poison: { damage: 0, range: 0, fireRate: 0, special: 0 },
+            lightning: { damage: 0, range: 0, fireRate: 0, special: 0 }
         };
 
         // Game Path
@@ -228,9 +233,9 @@
                 
                 const key = e.key;
                 
-                // Keys for selecting towers (1-7)
-                if (key >= '1' && key <= '7') {
-                    const towerTypes = ['basic', 'fast', 'strong', 'sniper', 'splash', 'slow', 'poison'];
+                // Keys for selecting towers (1-8)
+                if (key >= '1' && key <= '8') {
+                    const towerTypes = ['basic', 'fast', 'strong', 'sniper', 'splash', 'slow', 'poison', 'lightning'];
                     const towerType = towerTypes[parseInt(key) - 1];
                     if (towerType) {
                         selectTower(towerType);
@@ -560,7 +565,7 @@
                 trail: [],
                 maxTrailLength: 15,
                 type: tower.type,
-                splashRadius: tower.type === 'splash' ? 50 + (upgrades.special * 15) : 0,
+                splashRadius: tower.type === 'splash' || tower.type === 'lightning' ? 50 + (upgrades.special * 15) : 0,
                 slowFactor: tower.type === 'slow' ? 0.5 - (upgrades.special * 0.1) : 0,
                 slowDuration: tower.type === 'slow' ? 3000 : 0,
                 poisonDamage: tower.type === 'poison' ? 3 + upgrades.special : 0,
@@ -588,8 +593,8 @@
                     if (distance < enemy.radius + 8) {
                         createHitEffect(enemy.x, enemy.y, projectile.damage);
                         
-                        // Area damage for explosive tower
-                        if (projectile.type === 'splash') {
+                        // Area damage for explosive tower and lightning tower
+                        if (projectile.type === 'splash' || projectile.type === 'lightning') {
                             gameState.enemies.forEach((nearbyEnemy, nearbyIndex) => {
                                 const nearbyDistance = Math.sqrt(
                                     Math.pow(nearbyEnemy.x - enemy.x, 2) + 
@@ -612,7 +617,7 @@
                                     y: enemy.y + (Math.random() - 0.5) * (projectile.splashRadius * 2),
                                     vx: (Math.random() - 0.5) * 12,
                                     vy: (Math.random() - 0.5) * 12,
-                                    color: '#f59e0b',
+                                    color: projectile.color,
                                     life: 30,
                                     maxLife: 30,
                                     size: Math.random() * 10 + 5
@@ -1155,8 +1160,12 @@
                 specialBuy.innerHTML = `+10% (${80 + upgrades.special * 40}💰)`;
             } else if (towerType === 'poison') {
                 specialLabel.innerHTML = `Poison Intensity <span id="specialLevel">Level ${upgrades.special + 1}</span>`;
-                specialValue.textContent = `${3 + upgrades.special}/s por ${4 + upgrades.special}s`;
+                specialValue.textContent = `${3 + upgrades.special}/s per ${4 + upgrades.special}s`;
                 specialBuy.innerHTML = `+1 damage/s +1s (${80 + upgrades.special * 40}💰)`;
+            } else if (towerType === 'lightning') {
+                specialLabel.innerHTML = `Lightning Bolt <span id="specialLevel">Level ${upgrades.special + 1}</span>`;
+                specialValue.textContent = 50 + (upgrades.special * 15);
+                specialBuy.innerHTML = `+15 (${80 + upgrades.special * 40}💰)`;
             } else {
                 specialUpgrade.style.display = 'none';
             }
@@ -1192,7 +1201,6 @@
             if (gameState.money >= cost) {
                 gameState.money -= cost;
                 upgrades[stat]++;
-                updateDisplay();
                 showTowerUpgrade(currentUpgradeTowerType); // Refresh popup
             }
         }
@@ -1221,7 +1229,6 @@
                 const sellPrice = Math.floor(TOWER_TYPES[soldTower.type].cost * 0.7); // 70% value
                 gameState.money += sellPrice;
                 gameState.towers.splice(towerIndex, 1);
-                updateDisplay();
                 // Does not exit sell mode automatically
             }
         }
@@ -1292,7 +1299,6 @@
             if (gameState.money >= cost) {
                 gameState.money -= cost;
                 upgrades[stat]++;
-                updateDisplay();
                 showTowerUpgrade(currentUpgradeTowerType); // Refresh popup
             }
         }
